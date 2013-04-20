@@ -1,0 +1,19 @@
+!!!
+%html
+  %title Treefinger
+  = stylesheet_link_tag    "session", media: "all", "data-turbolinks-track" => true
+  = javascript_include_tag "application", "data-turbolinks-track" => true
+  = csrf_meta_tags
+  %body
+    %header
+      %h1 TreeFinger
+      = yield :sub_header
+      %section.sign_in
+        .field
+          %input{ type: "text", placeholder: "email or username" }
+        .field
+          %input{ type: "password", placeholder: "password" }
+        .field
+          %input{ type: "submit", value: "Sign in" }
+  %section#content
+    = yield
