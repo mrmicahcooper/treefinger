@@ -59,10 +59,11 @@ body
       width: 33%
       float: left
       display: block
-    section.editor
+    section#editor
       div.CodeMirror
+        height: 900px
     section.list
-      border: solid 4px #cccccc
+      border: solid 5px #cccccc
       border-top: none
       nav
         text-align: center
@@ -70,7 +71,7 @@ body
         border-bottom: solid 1px #ccc
         a
           display: inline-block
-          width: 85px
+          min-width: 85px
           border: solid 1px #fff
           +border-radius(0 0 3px 3px)
           border-top: none
@@ -85,11 +86,12 @@ body
       ul.tasks
         height: 900px
         display: block
-        overflow: auto
         li
           border-top: solid 1px #ccc
           overflow: hidden
           background: #f1fef3
+          div.title
+            cursor: default
           div
             padding: 10px
             float: left
@@ -100,7 +102,7 @@ body
               +border-radius(9px)
               color: #fff
           div.complete
-            border-right: solid 1px #ccc
+            border-right: solid 1px #eee
             a
               +opacity(0.1)
               +gradient-bg(#45a43f, #2e8d29)
@@ -120,8 +122,18 @@ body
               a
                 +opacity(1)
                 +gradient-bg(#45a43f, #2e8d29)
-        &:last-child
-          border-bottom: solid 1px #ccc
+          &.active
+            position: relative
+            z-index: 2
+            margin-left: -5px
+            background: #fff
+            border-left: solid 5px green
+          &.current
+            background: #fff
+            margin-right: -5px
+            padding-right: 5px
+            div.title
+              font-weight: bold
     section.messages
       width: 34%
       .form_container
@@ -146,7 +158,6 @@ body
             +box-shadow(0px 0px 1px 1px #cccccc)
             height: 100px
             background: #f9f9f9
-
       ul
         height: 900px
         overflow: auto
@@ -154,7 +165,6 @@ body
           padding: 20px
           border-bottom: solid 1px #ccc
           border-top: solid 1px #fff
-          background: #f9f9f9
           span.username
             font-weight: bold
           &:first-child

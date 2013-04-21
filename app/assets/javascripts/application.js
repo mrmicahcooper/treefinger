@@ -15,7 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require 'codemirror-3.12/lib/codemirror'
-//= require 'codemirror-3.12/mode/javascript/javascript.js'
+//= require 'codemirror-3.12/keymap/vim'
 
 
 
@@ -23,7 +23,19 @@ $(function(){
 	var code_mirror = CodeMirror(
 		document.getElementById('editor'),
 		{
-			lineNumbers: true
+			lineNumbers: true,
+			keyMap: 'vim',
+			indentWithTabs: true,
+			lineWrapping: true,
+			height: '900px'
 		}
 	);
+
+	$('ul.tasks li').click(function(){
+		var task = $(this);
+		$('ul.tasks li').removeClass("current");
+		task.toggleClass("active");
+		task.addClass("current");
+	});
+
 }); 
