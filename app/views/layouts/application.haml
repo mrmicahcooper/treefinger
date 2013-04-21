@@ -1,0 +1,18 @@
+!!!
+%html
+  %title Treefinger
+  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+  = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Oleo+Script:700,700"
+  = stylesheet_link_tag    "codemirror-3.12/lib/codemirror.css"
+  = javascript_include_tag "application", "data-turbolinks-track" => true
+  = csrf_meta_tags
+  %body
+    %header
+      %section.user
+        You are signed in as 
+        %span.username mrmicahcooper
+        = link_to('account')
+        = link_to('sign out', "#")
+      %h1 TreeFinger
+    %section#content
+      = yield

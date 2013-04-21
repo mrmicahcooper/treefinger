@@ -14,3 +14,16 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require 'codemirror-3.12/lib/codemirror'
+//= require 'codemirror-3.12/mode/javascript/javascript.js'
+
+
+
+$(function(){
+	var code_mirror = CodeMirror(
+		document.getElementById('editor'),
+		{
+			lineNumbers: true
+		}
+	);
+}); 

@@ -1,0 +1,32 @@
+%section#editor
+%section.list
+  %nav
+    = link_to "Incomplete", "#", class: 'active'
+    = link_to "Complete"
+    = link_to "All"
+  %ul.tasks
+    %li
+      .complete= link_to("complete")
+      .title User signs in
+      .delete= link_to("delete")
+    %li.active
+      .complete= link_to("complete")
+      .title User signs in
+      .delete= link_to("delete")
+    - 50.times do
+      %li
+        .complete= link_to("complete")
+        .title User signs in
+        .delete= link_to("delete")
+%section.messages
+  .form_container
+    %form
+      %textarea(placeholder="Message...")
+      .actions
+        = link_to("attach")
+        %input(type="submit" value="Add message")
+  %ul.messages
+    - 20.times do
+      %li
+        %span.username mrmicahcooper:
+        When I click the forgot password linke, I get a 404 error. Thats' unexpected
