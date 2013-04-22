@@ -16,10 +16,12 @@
 //= require_tree .
 //= require 'codemirror-3.12/lib/codemirror'
 //= require 'codemirror-3.12/keymap/vim'
+//= require 'nanoscroller.min.js'
 
 
 
 $(function(){
+
 	var code_mirror = CodeMirror(
 		document.getElementById('editor'),
 		{
@@ -27,15 +29,20 @@ $(function(){
 			keyMap: 'vim',
 			indentWithTabs: true,
 			lineWrapping: true,
-			height: '900px'
+			height: '900px',
+			tabSize: 2
 		}
 	);
 
-	$('ul.tasks li').click(function(){
-		var task = $(this);
-		$('ul.tasks li').removeClass("current");
-		task.toggleClass("active");
-		task.addClass("current");
+	$('#tasks ul li').click(function(){
+		$(this).toggleClass("active");
+	});
+
+	$('#tasks ul li .view a').click(function(e){
+		var $task = $(this).closest("li");
+		$('#tasks ul li').removeClass("current")
+		$task.addClass("current active");
+		return false;
 	});
 
 }); 

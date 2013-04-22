@@ -2,9 +2,11 @@
 %html
   %title Treefinger
   = stylesheet_link_tag    "codemirror-3.12/lib/codemirror.css"
-  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
-  = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Oleo+Script:700,700"
+  = stylesheet_link_tag    "nanoscroller.css"
+  = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Oleo+Script:700,700|Source+Code+Pro:500"
   = javascript_include_tag "application", "data-turbolinks-track" => true
+  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+  = yield :head
   = csrf_meta_tags
   %body
     %header
@@ -13,6 +15,6 @@
         %span.username mrmicahcooper
         = link_to('account')
         = link_to('sign out', "#")
-      %h1 TreeFinger
+      %h1= link_to "TreeFinger", root_path
     %section#content
       = yield

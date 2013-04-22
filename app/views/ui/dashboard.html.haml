@@ -1,24 +1,23 @@
+= content_for :head do
+  = stylesheet_link_tag "dashboard"
 %section#editor
-%section.list
-  %nav
-    = link_to "Incomplete", "#", class: 'active'
-    = link_to "Complete"
-    = link_to "All"
-  %ul.tasks
+%section#tasks
+  %ul
     - 50.times do
       %li
-        .complete= link_to("complete")
-        .title User signs in
-        .delete= link_to("delete")
-%section.messages
+        .view= link_to "view notes", "#"
+        .complete= link_to "complete", "#"
+        .name User signs in
+%section#notes
   .form_container
     %form
-      %textarea(placeholder="Message...")
+      %textarea{ placeholder: "Note..." }
       .actions
-        = link_to("attach")
+        = link_to "attach", "#"
         %input(type="submit" value="Add message")
-  %ul.messages
-    - 20.times do
-      %li
-        %span.username mrmicahcooper:
-        When I click the forgot password linke, I get a 404 error. Thats' unexpected
+  .note_container
+    %ul
+      - 20.times do
+        %li
+          %p.username mrmicahcooper
+          %p.note When I click the forgot password linke, I get a 404 error. Thats' unexpected and I do nt' liek it. Can you do something else right there that isn't so anoying. maybt a helpful page or something?

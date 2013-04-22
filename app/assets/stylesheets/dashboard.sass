@@ -1,0 +1,137 @@
+@import mixins
+
+html
+  body
+    header
+      padding: 6px 20px
+      +box-shadow(0 0 3px 1px #aaa)
+      z-index: 1
+      position: relative
+      h1
+        a
+          font-size: 20px
+      section.user
+        float: right
+        margin-top: 5px
+        width: 600px
+        text-align: right
+        font-size: 13px
+        span.username
+          font-weight: bold
+        a
+          margin: 0 10px
+    section#content
+      position: relative
+      +height-percent-minus-px(100%, 100px)
+      border: solid 1px #ccc
+      section#editor, section#tasks, section#notes
+        position: absolute
+        height: 100%
+        top: 0px
+        border-bottom: solid 1px #ccc
+      section#editor
+        left: 0
+        right: 67%
+        .CodeMirror
+          height: 100%
+          font-size: 15px
+          line-height: 18px
+          font-family: 'Source Code Pro', serif
+      section#tasks
+        height: 100%
+        overflow: auto
+        left: 33%
+        right: 33%
+        ul
+          li
+            border: solid 1px #ccc
+            border-top: solid 1px #fff
+            border-bottom: solid 1px #ccc
+            background: #f1fef3
+            cursor: default
+            div
+              padding: 13px 10px
+              display: inline-block
+              a
+                font-size: 11px
+                text-decoration: none
+                padding: 4px 4px
+                +border-radius(10px)
+                +gradient-bg(#f9f9f9, #ccc)
+                +opacity(0.2)
+                color: #bbb
+              &.complete
+                border-right: solid 1px #ccc
+              &.view
+                float: right
+            &:hover
+              background: #f1f4fe
+              div
+                a
+                  +opacity(1)
+                  color: #fff
+              .complete
+                a
+                  +gradient-bg(#45a43f, #2e8d29)
+              .view
+                a
+                  color: #444
+            &.current
+              background: #fff
+              border-right: #fff
+            &.active
+              border-left: solid 5px #45a43f
+              .complete
+                padding-left: 6px
+              .name
+                font-weight: bold
+      section#notes
+        padding: 0 0 0 10px
+        background: #fff
+        +left-percent-minus-px(67%, 15px)
+        right: 0
+        .form_container
+          padding: 0 20px 0 0 
+          background: #fff
+          border-bottom: solid 1px #ccc
+          form
+            padding-top: 10px
+            textarea
+              padding: 18px
+              font-family: Arial, sans-serif
+              +box-sizing(border-box)
+              width: 100%
+              +border-radius(3px)
+              border: solid 1px #ccc
+              padding: 8px
+              +box-shadow(0px 0px 1px 1px #cccccc)
+              height: 100px
+              background: #f9f9f9
+            div.actions
+              padding: 15px 0
+              text-align: right
+              input[type=submit]
+                +button(#f9f9f9, #ccc)
+                color: #444
+              a
+                margin-right: 25px
+        .note_container
+          overflow-y: scroll
+          +height-percent-minus-px(100%, 180px)
+          display: block
+          ul
+            background: #f9f9f9
+            li
+              border: solid 1px #ccc
+              border-top: solid 1px #fff
+              border-bottom: solid 1px #ccc
+              p.username
+                float: right
+                padding: 3px
+                font-weight: bold
+                border-bottom: solid 1px #ccc
+                border-left: solid 1px #ccc
+                background: #fff
+              p.note
+                padding: 18px
+                line-height: 20px

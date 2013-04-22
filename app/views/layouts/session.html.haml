@@ -1,15 +1,16 @@
 !!!
 %html
   %title Treefinger
-  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
   = stylesheet_link_tag    "session", media: "all", "data-turbolinks-track" => true
+  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
   = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Oleo+Script:700,700"
   = javascript_include_tag "application", "data-turbolinks-track" => true
   = csrf_meta_tags
   %body
     %header
       .logo
-        %h1 TreeFinger
+        %h1 
+          = link_to "TreeFinger", root_path
     %section.sign_in
       %form
         .field

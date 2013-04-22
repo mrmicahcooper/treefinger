@@ -4,168 +4,38 @@
 
 @import mixins
 
-= button($color1, $color2)
-  float: right
-  padding: 8px 9px
-  border: 1px solid $color1 - 3
-  color: #ffffff
-  font-size: 1.01em
-  +gradient-bg($color1, $color2)
-  +border-radius(3px)
-  &:hover
-    +box-shadow(none)
-*
-  font-family: Arial, sans-serif
-  font-size: 14px
-  word-spacing: 1px
-  +box-sizing(border-box)
-body
-  a
-    text-decoration: underline
-    color: #ccc
-  form
-    .field
-      padding: 8px
-      input
-        +border-radius(3px)
-      input[type=text], input[type=password]
-        width: 225px
-        border: 1px solid #888888
-        padding: 8px 8px
-        color: #444444
-      input[type=submit]
-        +button(#2d9a27, #175e13)
-        font-weight: bold
-  header
-    color: #ccc
-    padding: 6px 20px
-    +gradient-bg(#000, #333)
-    h1
-      color: #fff
-      font-size: 20px
-      font-family: 'Oleo Script', cursive
-    section.user
-      float: right
-      margin-top: 5px
-      width: 600px
-      text-align: right
-      font-size: 13px
-      span.username
-        font-weight: bold
-      a
-        margin: 0 10px
-  section#content
-    section#editor, section.list, section.messages
-      width: 33%
-      float: left
-      display: block
-    section#editor
-      div.CodeMirror
-        height: 900px
-    section.list
-      border: solid 5px #cccccc
-      border-top: none
-      nav
-        text-align: center
-        padding-bottom: 10px
-        border-bottom: solid 1px #ccc
+html
+  height: 100%
+  body
+    height: 100%
+    font-family: Arial, sans-serif
+    font-size: 14px
+    word-spacing: 1px
+    +box-sizing(border-box)
+    color: #444
+    header
+      +gradient-bg(#000, #333)
+      color: #ccc
+      h1
+        color: #ffffff
         a
-          display: inline-block
-          min-width: 85px
-          border: solid 1px #fff
-          +border-radius(0 0 3px 3px)
-          border-top: none
-          padding: 8px
-          +gradient-bg(#333, #000)
           color: #fff
+          font-family: 'Oleo Script', cursive
           text-decoration: none
+    a
+      text-decoration: underline
+      color: #ccc
+    form
+      .field
+        padding: 8px
+        input
+          +border-radius(3px)
+        input[type=text], input[type=password]
+          width: 225px
+          border: 1px solid #888888
+          padding: 8px 8px
+          color: #444444
+        input[type=submit]
+          +button(#2d9a27, #175e13)
+          float: right
           font-weight: bold
-          &.active
-            +gradient-bg(#fff, #ccc)
-            color: #444
-      ul.tasks
-        height: 900px
-        display: block
-        li
-          border-top: solid 1px #ccc
-          overflow: hidden
-          background: #f1fef3
-          div.title
-            cursor: default
-          div
-            padding: 10px
-            float: left
-            a
-              font-size: 12px
-              text-decoration: none
-              padding: 3px 4px
-              +border-radius(9px)
-              color: #fff
-          div.complete
-            border-right: solid 1px #eee
-            a
-              +opacity(0.1)
-              +gradient-bg(#45a43f, #2e8d29)
-          div.delete
-            float: right
-            a
-              +gradient-bg(#dc4a4a, #bf2d2d)
-              padding: 2px 3px
-              visibility: hidden
-          &:hover
-            background: #f1f4fe
-            div.delete
-              border-left: solid 1px #ccc
-              a
-                visibility: visible
-            div.complete
-              a
-                +opacity(1)
-                +gradient-bg(#45a43f, #2e8d29)
-          &.active
-            position: relative
-            z-index: 2
-            margin-left: -5px
-            background: #fff
-            border-left: solid 5px green
-          &.current
-            background: #fff
-            margin-right: -5px
-            padding-right: 5px
-            div.title
-              font-weight: bold
-    section.messages
-      width: 34%
-      .form_container
-        border-bottom: solid 1px #ccc
-        form
-          padding-top: 10px
-          width: 90%
-          margin: 0 auto
-          div.actions
-            padding: 15px 0
-            height: 65px
-            input[type=submit]
-              +button(#f9f9f9, #ccc)
-              color: #444
-          textarea
-            +box-sizing(border-box)
-            width: 100%
-            display: block
-            +border-radius(3px)
-            border: solid 1px #ccc
-            padding: 8px
-            +box-shadow(0px 0px 1px 1px #cccccc)
-            height: 100px
-            background: #f9f9f9
-      ul
-        height: 900px
-        overflow: auto
-        li
-          padding: 20px
-          border-bottom: solid 1px #ccc
-          border-top: solid 1px #fff
-          span.username
-            font-weight: bold
-          &:first-child
-            border-top: solid 1px #ccc

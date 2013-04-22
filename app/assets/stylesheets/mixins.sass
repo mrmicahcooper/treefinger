@@ -95,3 +95,21 @@ $prefixes: moz webkit o ms khtml
   -webkit-box-sizing: $argument
   -moz-box-sizing: $argument
   box-sizing: $argument
+= height-percent-minus-px($height_percent, $height_px)
+  @each $prefix in $prefixes
+    height: -#{$prefix}-calc(#{$height_percent} - #{$height_px})
+  height: calc(#{$height_percent} - #{$height_px})
+= left-percent-minus-px($left_percent, $left_px)
+  @each $prefix in $prefixes
+    left: -#{$prefix}-calc(#{$left_percent} - #{$left_px})
+  left: calc(#{$left_percent} - #{$left_px})
+= button($color1, $color2)
+  padding: 8px 9px
+  border: 1px solid $color1 - 3
+  color: #ffffff
+  font-size: 1.01em
+  +gradient-bg($color1, $color2)
+  +border-radius(3px)
+  &:hover
+    +box-shadow(none)
+
