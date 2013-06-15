@@ -3,7 +3,8 @@
 html
   body
     header
-      padding: 6px 20px
+      height: 3%
+      min-height: 30px
       +box-shadow(0 0 3px 1px #aaa)
       z-index: 1
       position: relative
@@ -22,7 +23,7 @@ html
           margin: 0 10px
     section#content
       position: relative
-      +height-percent-minus-px(100%, 100px)
+      height: 95%
       border: solid 1px #ccc
       section#editor, section#tasks, section#notes
         position: absolute
@@ -31,7 +32,7 @@ html
         border-bottom: solid 1px #ccc
       section#editor
         left: 0
-        right: 67%
+        right: 75%
         .CodeMirror
           height: 100%
           font-size: 15px
@@ -40,8 +41,8 @@ html
       section#tasks
         height: 100%
         overflow: auto
-        left: 33%
-        right: 33%
+        left: 25%
+        right: 50%
         ul
           li
             border: solid 1px #ccc
@@ -88,12 +89,13 @@ html
       section#notes
         padding: 0 0 0 10px
         background: #fff
-        +left-percent-minus-px(67%, 15px)
+        left: 50%
         right: 0
         .form_container
           padding: 0 20px 0 0 
           background: #fff
           border-bottom: solid 1px #ccc
+          height: 20%
           form
             padding-top: 10px
             textarea
@@ -117,7 +119,7 @@ html
                 margin-right: 25px
         .note_container
           overflow-y: scroll
-          +height-percent-minus-px(100%, 180px)
+          height: 80%
           display: block
           ul
             background: #f9f9f9
@@ -134,4 +136,4 @@ html
                 background: #fff
               p.note
                 padding: 18px
-                line-height: 20px
+                line-height: 1.8em

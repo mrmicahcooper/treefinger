@@ -18,8 +18,6 @@
 //= require 'codemirror-3.12/keymap/vim'
 //= require 'nanoscroller.min.js'
 
-
-
 $(function(){
 
 	var code_mirror = CodeMirror(
@@ -45,4 +43,4 @@ $(function(){
 		return false;
 	});
 
-}); 
+});
