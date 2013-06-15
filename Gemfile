@@ -8,7 +8,6 @@ gem 'jbuilder', '~> 1.0.1'
 gem 'jquery-rails'
 gem 'pg'
 gem 'rails', '4.0.0.beta1'
-gem 'turbolinks'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0.beta1'

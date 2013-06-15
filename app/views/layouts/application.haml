@@ -4,8 +4,9 @@
   = stylesheet_link_tag    "codemirror-3.12/lib/codemirror.css"
   = stylesheet_link_tag    "nanoscroller.css"
   = stylesheet_link_tag    "http://fonts.googleapis.com/css?family=Oleo+Script:700,700|Source+Code+Pro:500"
-  = javascript_include_tag "application", "data-turbolinks-track" => true
-  = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+  = javascript_include_tag "application"
+  = javascript_include_tag "https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"
+  = stylesheet_link_tag    "application"
   = yield :head
   = csrf_meta_tags
   %body
