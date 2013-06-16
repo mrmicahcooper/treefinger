@@ -1,3 +1,3 @@
 class PagesController < ApplicationController
-  layout 'session'
+  layout 'session', only: :new
 end

@@ -31,15 +31,12 @@ $(function(){
 		}
 	);
 
-	$('#tasks ul li').click(function(){
-		$(this).toggleClass("active");
-	});
-
 	$('#tasks ul li .view a').click(function(e){
 		var $task = $(this).closest("li");
 		$('#tasks ul li').removeClass("current")
 		$task.addClass("current active");
 		return false;
 	});
+
 
 });
