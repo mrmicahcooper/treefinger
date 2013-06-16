@@ -10,6 +10,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'pry-rails'
 gem 'rails', '4.0.0.rc1'
+gem 'thin'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0.rc1'
