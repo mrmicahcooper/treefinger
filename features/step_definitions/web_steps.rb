@@ -13,3 +13,4 @@ end
 Then /^I should be on my (\w+) page$/ do |path|
   page.current_path.should == send("#{path}_path".to_sym)
 end
+
