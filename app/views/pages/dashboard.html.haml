@@ -6,6 +6,20 @@
     %li{"ng-repeat" => "task in tasks",
         "ng-click"  => "toggle_task($index)",
         "ng-class"  => "{true: 'active'}[task.active]" }
-      .view= link_to "view notes", "#"
+      .view
+        %a(stop-propagation href="#"){"ng-click" => "view_note()"}
+          view notes
       .complete= link_to "complete", "#"
       .name {{task.name}}
+%section#notes
+  .form_container
+    %form
+      %textarea{ placeholder: "Note..." }
+      .actions
+        = link_to "attach", "#"
+        %input(type="submit" value="Add message")
+  .note_container
+    %ul(ng-controller="dashboard.notes")
+      %li{"ng-repeat" => "note in notes"}
+        %p.username {{note.author}}
+        %p.note {{note.body}}

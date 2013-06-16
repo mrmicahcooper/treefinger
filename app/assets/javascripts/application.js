@@ -29,6 +29,16 @@ var dashboard = {
 			task.active ? task.active = false : task.active = true
 			dashboard.update_task_editor($scope.tasks);
 		}
+
+		$scope.view_note = function($index){
+		}
+	},
+
+	notes: function($scope, $http){
+		$scope.notes = [
+			{"author":"mrmicahcooper", "body":"this is the note body.\n like it and love it."},
+			{"author":"skrillex", "body":"this is the note body.\n dropping like it's hot\n mmkay"},
+		]
 	},
 
 	update_task_editor: function(tasks){
@@ -57,5 +67,9 @@ var dashboard = {
 $(function(){
 
 	dashboard.load_code_mirror();
+	$('#tasks .view a').click(function(e){
+		console.log('hello');
+		e.stopPropagation()
+	})
 
 })
