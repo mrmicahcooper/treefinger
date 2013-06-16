@@ -3,7 +3,10 @@ development:
   encoding: unicode
   database: treefinger_development
 
-test:
+test: &test
   adapter: postgresql
   encoding: unicode
   database: treefinger_test
+
+cucumber:
+  <<: *test
