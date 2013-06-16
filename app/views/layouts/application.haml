@@ -14,8 +14,7 @@
       %section.user
         You are signed in as 
         %span.username mrmicahcooper
-        = link_to('account')
-        = link_to('sign out', "#")
+        = link_to 'Sign out', :sign_out
       %h1= link_to "TreeFinger", root_path
     %section#content(ng-app)
       = yield

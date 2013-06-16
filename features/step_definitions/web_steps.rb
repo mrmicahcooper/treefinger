@@ -6,11 +6,19 @@ When /^I press "(.*)"$/ do |button|
   click_button button
 end
 
-Then /^I should see "(.*)"$/ do |content|
+When /^I go to the (.+) page$/ do |path|
+  visit send("#{path}_path".to_sym)
+end
+
+When /^I follow "(.+)"$/ do |link|
+  click_link link
+end
+
+Then /^I should see "(.+)"$/ do |content|
   page.should have_content(content)
 end
 
-Then /^I should be on my (\w+) page$/ do |path|
+Then /^I should be on (?:my|the) (\w+) page$/ do |path|
   page.current_path.should == send("#{path}_path".to_sym)
 end
 

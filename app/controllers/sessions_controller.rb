@@ -1,8 +1,9 @@
 class SessionsController < ApplicationController
+  skip_before_filter :require_user
 
-  expose(:user) {
+  expose(:user) do
     User.where('email = :query OR username = :query', query: email_or_username).first
-  }
+  end
 
   def create
     if user && user.authenticate(password)
@@ -11,6 +12,11 @@ class SessionsController < ApplicationController
     else
       redirect_to :root
     end
+  end
+
+  def destroy
+    sign_out
+    redirect_to :root
   end
 
   private

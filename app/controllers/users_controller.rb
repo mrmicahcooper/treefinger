@@ -1,10 +1,12 @@
 class UsersController < ApplicationController
+  skip_before_filter :require_user, only: :create
   layout 'session', only: :create
 
   expose(:user) { User.new(user_params) }
 
   def create
     if user.save
+      sign_in(user)
       redirect_to :dashboard
     else
       render 'pages/home'
