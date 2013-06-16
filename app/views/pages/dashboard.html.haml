@@ -2,7 +2,7 @@
   = stylesheet_link_tag "dashboard"
 %section#editor
 %section#tasks
-  %ul(ng-controller="tasks")
+  %ul(ng-controller="dashboard.tasks")
     %li{"ng-repeat" => "task in tasks",
         "ng-click"  => "toggle_task($index)",
         "ng-class"  => "{true: 'active'}[task.active]" }

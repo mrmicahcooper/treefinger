@@ -3,11 +3,11 @@ Project = {
   tasks: [
     {
       name: "first task",
-      description: "Description of the first task"
+      task_string: "First task\n  Descrption of the first task"
     },
     {
       name: "second task",
-      description: "Description of the second task"
+      task_string: "Second task\n  Descrption of the second task"
     },
   ]
 }

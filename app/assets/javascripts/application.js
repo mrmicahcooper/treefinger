@@ -17,26 +17,45 @@
 //= require 'codemirror-3.12/keymap/vim'
 //= require 'nanoscroller.min.js'
 
+var dashboard = {
+
+	tasks: function($scope, $http){
+		$http.get('/projects/1').success(function(data){
+			$scope.tasks = data;
+		});
+
+		$scope.toggle_task = function($index){
+			var task = $scope.tasks[$index];
+			task.active ? task.active = false : task.active = true
+			dashboard.update_task_editor($scope.tasks);
+		}
+	},
+
+	update_task_editor: function(tasks){
+		dashboard.editor_text = "";
+		for (var index = 0; index < tasks.length; index++){
+			if(tasks[index].active){ 
+				dashboard.editor_text += tasks[index].task_string + '\n\n' 
+			}
+		};
+		dashboard.editor.setValue(dashboard.editor_text);
+	},
+
+	load_code_mirror: function(){
+		dashboard.editor = CodeMirror(document.getElementById('editor'),
+			{
+				lineNumbers: true,
+				keyMap: 'vim',
+				indentWithTabs: true,
+				lineWrapping: true,
+				height: '900px',
+				tabSize: 2,
+			});
+	}
+}
+
 $(function(){
 
-	var code_mirror = CodeMirror(
-		document.getElementById('editor'),
-		{
-			lineNumbers: true,
-			keyMap: 'vim',
-			indentWithTabs: true,
-			lineWrapping: true,
-			height: '900px',
-			tabSize: 2
-		}
-	);
+	dashboard.load_code_mirror();
 
-	$('#tasks ul li .view a').click(function(e){
-		var $task = $(this).closest("li");
-		$('#tasks ul li').removeClass("current")
-		$task.addClass("current active");
-		return false;
-	});
-
-
-});
+})
