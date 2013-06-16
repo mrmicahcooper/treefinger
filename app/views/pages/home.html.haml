@@ -10,14 +10,11 @@
     %li Hell Yeah! Ponies!
   
 %article.sign_up
-  %form
+  = form_for user, url: :users do |f|
+    .field= f.text_field :username, placeholder: "username"
+    .field= f.text_field :email, placeholder: 'email'
+    .field= f.password_field :password, placeholder: 'password'
+    .field= f.password_field :password_confirmation, placeholder: 'password confirmation'
+
     .field
-      %input{ type: "text", placeholder: "username" }
-    .field
-      %input{ type: "text", placeholder: "email" }
-    .field
-      %input{ type: "password", placeholder: "password" }
-    .field
-      %input{ type: "password", placeholder: "password confirmation" }
-    .field
-      %input{ type: "submit", value: "Register for free" }
+      = f.submit "Register for free"
