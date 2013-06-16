@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require_tree .
 //= require 'codemirror-3.12/lib/codemirror'
 //= require 'codemirror-3.12/keymap/vim'
