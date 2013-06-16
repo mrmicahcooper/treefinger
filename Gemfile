@@ -8,6 +8,7 @@ gem 'haml-rails'
 gem 'jbuilder', '~> 1.0.1'
 gem 'jquery-rails'
 gem 'pg'
+gem 'pry-rails'
 gem 'rails', '4.0.0.rc1'
 
 group :assets do
@@ -21,6 +22,5 @@ group :test, :developement do
   gem 'database_cleaner'
   gem 'fabrication'
   gem 'launchy'
-  gem 'pry-rails'
   gem 'rspec-rails'
 end
