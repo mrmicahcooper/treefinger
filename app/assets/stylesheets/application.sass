@@ -2,40 +2,136 @@
  *= require_self
  */
 
-@import mixins
+@import "mixins"
 
-html
-  height: 100%
-  body
-    height: 100%
-    font-family: Arial, sans-serif
-    font-size: 14px
-    word-spacing: 1px
-    +box-sizing(border-box)
-    color: #444
-    header
-      +gradient-bg(#000, #333)
-      color: #ccc
-      h1
-        color: #ffffff
-        a
-          color: #fff
-          font-family: 'Oleo Script', cursive
-          text-decoration: none
++font-face("Mathlete Bulky", "Mathlete-Bulky")
++font-face("Mathlete Bulky Slant", "Mathlete-BulkySlant")
++font-face("Mathlete Skinny", "Mathlete-BulkySlant")
++font-face("Mathlete Skinny Slant", "Mathlete-BulkySlant")
+
+body
+  line-height: 180%
+
+form
+  font-size: 13px
+  color: #999898
+  font-family: Helvetica, Arial, sans-serif
+
+  input[type="text"], input[type="email"], input[type="password"]
+    border: solid 1px #d5d5d5
+    height: 28px
+    width: 165px
+    padding: 0 5px
+    +box-sizing
+    
+
+  input[type="submit"]
+    background: #83c12a
+    font: bold 13px Helvetica, sans-serif
+    color: #ffffff
+    border: none
+    padding: 0 15px 
+    height: 28px
+
+// .column
+//   max-width: 1000px
+//   min-width: 800px
+//   margin: 0 auto
+//   padding: 0 100px
+
+#main_container
+  padding: 0 100px
+  background: image-url("background.png") 0 45px no-repeat
+  max-width: 1000px
+  min-width: 800px
+  margin: 0 auto
+  overflow: hidden
+
+header
+  padding: 20px 0 0 0
+  position: relative
+  h1
+    display: block
+    font-size: 1px
+    text-indent: -6969px
+    overflow: hidden
+    background: transparent image-url("logo.png") 0 0 no-repeat
+    height: 45px
+    width: 111px
+  form.sign_in
+    position: absolute
+    top: 20px
+    right: 0
+    fieldset
+      display: inline-block
+      dl
+        float: left
+        padding: 0 15px 0 0
+      &.actions
+        vertical-align: 10px
+
+article#home
+  float: left
+  position: relative
+  height: 450px
+  padding: 60px 0 0 0
+  header
+    padding: 40px 0 0 40px
+    display: block
+    font-size: 1px
+    overflow: hidden
+    background: transparent image-url("title_background.png") 0 0 no-repeat
+    height: 220px
+    width: 685px
+  h1
+    display: block
+    background: transparent image-url("title.png") 0 0 no-repeat
+    text-indent: - 6969px
+    overflow: hidden
+    height: 115px
+    width: 590px
+
+  h2
+    font: normal 42px "Mathlete Skinny", sans-serif
+    color: #787575
+  p
+    width: 275px
+    font-family: Helvetica, Arial, sans-serif
+    font-size: 18px
+    color: #6a6a6a
+    margin: 0 0 0 25px
+  footer
+    position: absolute
+    z-index: 1
+    right: 45px
+    bottom: 0
+    background: image-url("pony.png") 0 0 no-repeat
+    width: 333px
+    height: 244px
+    text-indent: -6969px
+    overflow: hidden
+
+aside#sign_up
+  vertical-align: top
+  float: right
+  width: 268px
+  h1
+    font: normal 43px "Mathlete Skinny"
+    color: #3f3e3e
+    padding: 60px 0 25px 0
+    background: image-url("free.png") 40px 35px no-repeat
+    small
+      font-size: 28px
+      color: #787878
     a
-      text-decoration: underline
-      color: #ccc
-    form
-      .field
-        padding: 8px
-        input
-          +border-radius(3px)
-        input[type=text], input[type=password]
-          width: 225px
-          border: 1px solid #888888
-          padding: 8px 8px
-          color: #444444
-        input[type=submit]
-          +button(#2d9a27, #175e13)
-          float: right
-          font-weight: bold
+      font-size: 28px
+      color: #ffffff
+      background: #898a88
+      padding: 0 10px 3px 10px
+      text-decoration: none
+      vertical-align: 4px
+  input
+    width: 100%
+    height: 40px
+  dd
+    padding: 0 0 15px 0

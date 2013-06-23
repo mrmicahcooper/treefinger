@@ -1,0 +1,26 @@
+!!!
+%html 
+  %head 
+    %title Treefinger
+    = stylesheet_link_tag "application", media: "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    #main_container
+      %header
+        %h1 Tree Finger
+        %form.sign_in
+          %fieldset
+            %dl
+              %dt
+                %label Email or username
+              %dd
+                %input(type="email")
+            %dl
+              %dt
+                %label Password
+              %dd
+                %input(type="password")
+          %fieldset.actions
+            %input(type="submit" value= "Sign in")
+      #content= yield
