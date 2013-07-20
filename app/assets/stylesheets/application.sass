@@ -23,21 +23,14 @@ form
     width: 165px
     padding: 0 5px
     +box-sizing
-    
 
   input[type="submit"]
     background: #83c12a
     font: bold 13px Helvetica, sans-serif
     color: #ffffff
     border: none
-    padding: 0 15px 
+    padding: 0 15px
     height: 28px
-
-// .column
-//   max-width: 1000px
-//   min-width: 800px
-//   margin: 0 auto
-//   padding: 0 100px
 
 #main_container
   padding: 0 100px
@@ -135,3 +128,31 @@ aside#sign_up
     height: 40px
   dd
     padding: 0 0 15px 0
+
+header#main
+  height: 80px
+  position: relative
+  padding: 0 20px
+  section.session
+    font-family: verdana, sans-serif
+    font-size: 12px
+    position: absolute
+    right: 30px
+    bottom: 10px
+    color: #686767
+    a
+      color: #686767
+
+
+
+section#content
+  padding: 0 20px
+  &> section
+    background: #525050
+    width: 33%
+    float: left
+    border: solid 2px #3d3c3c
+    max-height: 500px
+    overflow: hidden
+
+

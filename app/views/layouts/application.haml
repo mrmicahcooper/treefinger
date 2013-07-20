@@ -8,11 +8,12 @@
   = stylesheet_link_tag    "application"
   = csrf_meta_tags
   %body
-    %header
-      %section.user
+    %header#main
+      %section.session
         You are signed in as 
         %span.username mrmicahcooper
-        = link_to 'Sign out', :sign_out
+        |
+        = link_to 'sign out', :sign_out
       %h1= link_to "TreeFinger", root_path
-    %section#content(ng-app)
+    %section#content
       = yield

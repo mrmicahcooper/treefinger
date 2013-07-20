@@ -8,8 +8,8 @@ class UiController < ApplicationController
     case action_name
     when 'home'
       "ui_session"
-    else
-      "ui_application"
+    when 'dashboard'
+      "application"
     end
   end
 
