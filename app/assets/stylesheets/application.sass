@@ -9,6 +9,12 @@
 +font-face("Mathlete Skinny", "Mathlete-BulkySlant")
 +font-face("Mathlete Skinny Slant", "Mathlete-BulkySlant")
 
+.CodeMirror
+  font-family: monaco, monospace
+  font-size: 13px
+  color: #686767
+  line-height: 170%
+
 body
   line-height: 180%
 
@@ -130,15 +136,14 @@ aside#sign_up
     padding: 0 0 15px 0
 
 header#main
-  height: 80px
   position: relative
-  padding: 0 20px
+  padding: 10px 20px
   section.session
     font-family: verdana, sans-serif
     font-size: 12px
     position: absolute
     right: 30px
-    bottom: 10px
+    bottom: 0
     color: #686767
     a
       color: #686767
@@ -147,12 +152,84 @@ header#main
 
 section#content
   padding: 0 20px
+  overflow: hidden
   &> section
     background: #525050
-    width: 33%
     float: left
+    vertical-align: top
+    max-height: 100%
+    min-height: 100%
+    margin: 0
     border: solid 2px #3d3c3c
-    max-height: 500px
-    overflow: hidden
 
+section#editor
+  width: 32%
 
+section#tasks
+  width: 30%
+  font-family: monaco, sans-serif
+  font-size: 13px
+  color: #9ace50
+  li
+    padding: 0 20px
+    margin: 4px 0
+    position: relative
+    cursor: pointer
+    &:hover
+      background: #616161
+    &.active
+      .left_arrow
+        display: block
+        position: absolute
+        width: 30px
+        height: 22px
+        left: -19px
+        top: 3px
+        background: image-url("left_arrow.png") no-repeat
+      .right_arrow
+        display: block
+        position: absolute
+        width: 30px
+        height: 22px
+        right: -19px
+        top: 3px
+        background: image-url("right_arrow.png") no-repeat
+  .actions
+    float: right
+    font-size: 12px
+    a
+      color: #faf9f7
+      text-decoration: none
+      &:hover
+        text-decoration: underline
+
+section#notes
+  width: 37%
+  padding: 5px 15px 20px 15px
+  +box-sizing(border-box)
+  font-family: verdana, sans-serif
+  font-size: 13px
+  color: #c6c3c3
+  line-height: 170%
+  form
+    textarea
+      width: 100%
+      height: 100px
+      background: #3d3c3c
+      font-family: verdana, sans-serif
+      color: #c6c3c3
+      padding: 5px
+      +box-sizing(border-box)
+      font-size: 13px
+    fieldset.actions
+      float: right
+      a
+        margin: 0 10px
+        text-decoration: none
+        color: #d96e5d
+  .note_container
+    clear: both
+  p.username
+    color: #5db7d9
+  p.note
+    padding: 0 0 20px 10px

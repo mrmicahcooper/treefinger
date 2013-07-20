@@ -1,22 +1,45 @@
 %section#editor
-  THis is the editor
+
 %section#tasks
   %ul
-    - 50.times do
-      %li
-        .view= link_to "view notes", "#"
-        .complete= link_to "complete", "#"
-        .name User signs in
-%section#notes
-  .form_container
-    %form
-      %textarea{ placeholder: "Note..." }
+    %li.active.noted
+      .left_arrow
+      .right_arrow
+      User signs up
       .actions
-        = link_to "attach", "#"
-        %input(type="submit" value="Add message")
+        = link_to "accept", "#", class: 'complete'
+        |
+        = link_to "notes", "#", class: 'view'
+    %li.active
+      User signs in
+      .left_arrow
+      .actions
+        = link_to "accept", "#", class: 'complete'
+        |
+        = link_to "notes", "#", class: 'view'
+    %li
+      .left_arrow
+      User signs out
+      .actions
+        = link_to "deliver", "#", class: 'complete'
+        |
+        = link_to "notes", "#", class: 'view'
+    %li
+      User edits account
+      .actions
+        = link_to "deliver", "#", class: 'complete'
+        |
+        = link_to "notes", "#", class: 'view'
+%section#notes
   .note_container
-    %ul
-      - 20.times do
+    %ul.notes
+      - 2.times do
         %li
           %p.username mrmicahcooper
           %p.note When I click the forgot password linke, I get a 404 error. Thats' unexpected and I do nt' liek it. Can you do something else right there that isn't so anoying. maybt a helpful page or something?
+  %form.new_note
+    %fieldset
+      %textarea{ placeholder: "Note..." }
+    %fieldset.actions
+      = link_to "attach a file", "#"
+      %input(type="submit" value="Add note")
