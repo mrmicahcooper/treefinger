@@ -1,6 +1,6 @@
 Treefinger::Application.routes.draw do
 
-  root to: 'ui#home'
+  root to: 'pages#home'
 
   get '/ui/(:action)', controller: 'ui'
   get '/dashboard', to: 'pages#dashboard'

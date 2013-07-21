@@ -1,20 +1,24 @@
-%article.about_treefinger
-  %ul
-    %li TreeFinger is a project and task manager.
-    %li It's made for people who hate using project and task managers.
-    %li TreeFinger uses a simple sintax to manages task items;
-    %li It's just indenting (that thing you learned in elementary school).
-    %li Add and edit items(stories) and descriptions very quickly.
-    %li So managing your workflow doesn't get in the way of your workflow
-    %li and you can ride ponies with all the time you saved.
-    %li Hell Yeah! Ponies!
-  
-%article.sign_up
-  = form_for user, url: :users do |f|
-    .field= f.text_field :username, placeholder: "username"
-    .field= f.text_field :email, placeholder: 'email'
-    .field= f.password_field :password, placeholder: 'password'
-    .field= f.password_field :password_confirmation, placeholder: 'password confirmation'
+%article#home
+  %header
+    %h1 A project & task manager
+    %h2 for people who hate using project and task managers
+  %p Tree Finger is the world’s simplest project manager: just add and edit items using indentation (that thing you learned in elementary school).  Managing your workflow has never been easier!
+  %footer Use treefinger and ride ponies with the time you save
 
-    .field
+%aside#sign_up
+  %h1
+    Sign up
+
+  = form_for user do |f|
+    %fieldset
+      %dl
+        %dt= f.label :username
+        %dd= f.text_field :username
+        %dt= f.label :email
+        %dd= f.email_field :email
+        %dt= f.label :password
+        %dd= f.password_field :password
+        %dt= f.label :password_confirmation
+        %dd= f.password_field :password_confirmation
+    %fieldset
       = f.submit "Register for free"
