@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
   def create
     if user && user.authenticate(password)
       sign_in(user)
-      redirect_to :dashboard
+      redirect_to dashboard_path(current_user.username)
     else
       redirect_to :root
     end

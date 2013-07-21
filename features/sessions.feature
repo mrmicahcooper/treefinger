@@ -6,10 +6,10 @@ Feature: Sessions
 			| email@example.com | dudebro  |
 		And I am on the home page
 		When I sign in with "email@example.com" and "password"
-		Then I should be on my dashboard page
+		Then I should see my username in the url
 
 		When I follow "sign out"
 		Then I should be on the root page
 
-		When I go to the dashboard page
+		When I go to that user's page
 		Then I should be on the root page
