@@ -7,7 +7,7 @@ class UsersController < ApplicationController
   def create
     if user.save
       sign_in(user)
-      redirect_to :dashboard
+      redirect_to dashboard_path(current_user.username)
     else
       render 'pages/home'
     end

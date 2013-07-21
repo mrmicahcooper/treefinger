@@ -138,6 +138,14 @@ aside#sign_up
 header#main
   position: relative
   padding: 10px 20px
+  h1, h2
+    display: inline-block
+  h2
+    font: normal 42px "Mathlete Skinny", sans-serif
+    color: #686767
+    vertical-align: -30px
+    &:before
+      content: "/"
   section.session
     font-family: verdana, sans-serif
     font-size: 12px
@@ -148,11 +156,10 @@ header#main
     a
       color: #686767
 
-
-
 section#content
   padding: 0 20px
   overflow: hidden
+  clear: both
   &> section
     background: #525050
     float: left
