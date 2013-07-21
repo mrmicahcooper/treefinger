@@ -1,25 +1,44 @@
-= content_for :head do
-  = stylesheet_link_tag "dashboard"
 %section#editor
 %section#tasks
-  %ul(ng-controller="dashboard.tasks")
-    %li{"ng-repeat" => "task in tasks",
-        "ng-click"  => "toggle_task($index)",
-        "ng-class"  => "{true: 'active'}[task.active]" }
-      .view
-        %a(stop-propagation href="#"){"ng-click" => "view_note()"}
-          view notes
-      .complete= link_to "complete", "#"
-      .name {{task.name}}
-%section#notes
-  .form_container
-    %form
-      %textarea{ placeholder: "Note..." }
+  %ul
+    %li.active.noted
+      .left_arrow
+      .right_arrow
+      User signs up
       .actions
-        = link_to "attach", "#"
-        %input(type="submit" value="Add message")
+        = link_to "accept", "#", class: 'complete'
+        |
+        = link_to "notes", "#", class: 'view'
+    %li.active
+      User signs in
+      .left_arrow
+      .actions
+        = link_to "accept", "#", class: 'complete'
+        |
+        = link_to "notes", "#", class: 'view'
+    %li
+      .left_arrow
+      User signs out
+      .actions
+        = link_to "deliver", "#", class: 'complete'
+        |
+        = link_to "notes", "#", class: 'view'
+    %li
+      User edits account
+      .actions
+        = link_to "deliver", "#", class: 'complete'
+        |
+        = link_to "notes", "#", class: 'view'
+%section#notes
   .note_container
-    %ul(ng-controller="dashboard.notes")
-      %li{"ng-repeat" => "note in notes"}
-        %p.username {{note.author}}
-        %p.note {{note.body}}
+    %ul.notes
+      - 2.times do
+        %li
+          %p.username mrmicahcooper
+          %p.note When I click the forgot password linke, I get a 404 error. Thats' unexpected and I do nt' liek it. Can you do something else right there that isn't so anoying. maybt a helpful page or something?
+  %form.new_note
+    %fieldset
+      %textarea{ placeholder: "Note..." }
+    %fieldset.actions
+      = link_to "attach a file", "#"
+      %input(type="submit" value="Add note")

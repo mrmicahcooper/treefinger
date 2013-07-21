@@ -9,4 +9,14 @@
     #main_container
       %header
         %h1 Tree Finger
+        = form_tag :sign_in, class: "sign_in" do
+          %fieldset
+            %dl
+              %dt= label_tag :email_or_username
+              %dd= text_field_tag :email_or_username
+            %dl
+              %dt= label_tag :password
+              %dd= password_field_tag :password
+          %fieldset.actions
+            %input(type="submit" value= "Sign in")
       #content= yield

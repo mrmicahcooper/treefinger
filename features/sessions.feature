@@ -8,7 +8,7 @@ Feature: Sessions
 		When I sign in with "email@example.com" and "password"
 		Then I should be on my dashboard page
 
-		When I follow "Sign out"
+		When I follow "sign out"
 		Then I should be on the root page
 
 		When I go to the dashboard page
