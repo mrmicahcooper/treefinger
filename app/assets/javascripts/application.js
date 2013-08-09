@@ -15,14 +15,8 @@
 //= require_tree .
 //= require 'codemirror-3.12/lib/codemirror'
 //= require 'codemirror-3.12/keymap/vim'
-//= require 'nanoscroller.min.js'
 
 var dashboard = {
-
-	tasks: function($scope, $http){
-		$http.get('/projects/1').success(function(data){
-			$scope.tasks = data;
-		});
 
 		$scope.toggle_task = function($index){
 			var task = $scope.tasks[$index];
@@ -32,23 +26,6 @@ var dashboard = {
 
 		$scope.view_note = function($index){
 		}
-	},
-
-	notes: function($scope, $http){
-		$scope.notes = [
-			{"author":"mrmicahcooper", "body":"this is the note body.\n like it and love it."},
-			{"author":"skrillex", "body":"this is the note body.\n dropping like it's hot\n mmkay"},
-		]
-	},
-
-	update_task_editor: function(tasks){
-		dashboard.editor_text = "";
-		for (var index = 0; index < tasks.length; index++){
-			if(tasks[index].active){
-				dashboard.editor_text += tasks[index].task_string + '\n\n'
-			}
-		};
-		dashboard.editor.setValue(dashboard.editor_text);
 	},
 
 	load_code_mirror: function(){
@@ -68,7 +45,6 @@ $(function(){
 
 	dashboard.load_code_mirror();
 	$('#tasks .view a').click(function(e){
-		console.log('hello');
 		e.stopPropagation()
 	})
 
