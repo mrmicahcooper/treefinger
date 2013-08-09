@@ -18,34 +18,37 @@
 
 var dashboard = {
 
-		$scope.toggle_task = function($index){
-			var task = $scope.tasks[$index];
-			task.active ? task.active = false : task.active = true
-			dashboard.update_task_editor($scope.tasks);
-		}
-
-		$scope.view_note = function($index){
-		}
-	},
-
 	load_code_mirror: function(){
-		dashboard.editor = CodeMirror(document.getElementById('editor'),
-			{
-				lineNumbers: true,
-				keyMap: 'vim',
-				indentWithTabs: true,
-				lineWrapping: true,
-				height: '900px',
-				tabSize: 2,
-			});
+		dashboard.editor = CodeMirror(document.getElementById('editor'), {
+			lineNumbers: true,
+			keyMap: 'vim',
+			indentWithTabs: true,
+			lineWrapping: true,
+			height: '900px',
+			tabSize: 2,
+		});
 	}
-}
+
+};
 
 $(function(){
 
 	dashboard.load_code_mirror();
 	$('#tasks .view a').click(function(e){
 		e.stopPropagation()
-	})
+	});
 
-})
+	function taskViewModel() {
+		var self = this;
+
+		self.tasks = [
+			{ title: "this is cool"},
+			{ title: "This is also cool"}
+		]
+
+	};
+
+	ko.applyBindings(new taskViewModel());
+
+});
+
