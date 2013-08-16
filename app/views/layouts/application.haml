@@ -15,5 +15,6 @@
         |
         = link_to 'sign out', :sign_out
       %h1= link_to "TreeFinger", root_path
+      = yield :project
     %section#content
       = yield
