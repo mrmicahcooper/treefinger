@@ -11,7 +11,7 @@
       %section.session
         You are signed in as #{current_user.username}
         |
-        = link_to 'view all projects', '#'
+        = link_to 'view all projects', dashboard_path(current_user.username)
         |
         = link_to 'sign out', :sign_out
       %h1= link_to "TreeFinger", root_path
