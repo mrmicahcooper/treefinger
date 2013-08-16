@@ -1,5 +1,3 @@
-%section#editor
-%section#tasks
-  %ul{"data-bind" => "foreach: tasks"}
-    %li{"data-bind" => "text: title"}
-%section#notes
+%ul.projects
+  - projects.each do |project|
+    %li= project.name
