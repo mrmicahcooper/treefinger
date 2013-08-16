@@ -1,1 +1,5 @@
 --color
+--format documentation
+-I 'lib'
+-I 'app'
+-I 'app/models'
