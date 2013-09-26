@@ -10,6 +10,7 @@ gem 'pg'
 gem 'pry-rails'
 gem 'rails', '4.0.0'
 gem 'puma'
+gem 'oj'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'
