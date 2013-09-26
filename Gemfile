@@ -5,12 +5,11 @@ source 'https://rubygems.org'
 gem 'authem', '1.1.0'
 gem 'decent_exposure'
 gem 'haml-rails'
-gem 'jbuilder', '~> 1.0.1'
 gem 'jquery-rails'
 gem 'pg'
 gem 'pry-rails'
 gem 'rails', '4.0.0'
-gem 'thin'
+gem 'puma'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'
