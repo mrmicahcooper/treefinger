@@ -18,6 +18,7 @@ group :assets do
 end
 
 group :test, :developement do
+  gem 'capybara-webkit'
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'fabrication'
