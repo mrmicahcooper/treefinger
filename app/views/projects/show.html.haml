@@ -1,2 +1,5 @@
+= content_for :head do
+  = stylesheet_link_tag    "codemirror-3.12/lib/codemirror.css"
+  = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"
 = content_for :project do
   %h2= current_project.name
