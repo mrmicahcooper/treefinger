@@ -1,11 +1,11 @@
 !!!
 %html
-  %title Treefinger
-  = stylesheet_link_tag    "codemirror-3.12/lib/codemirror.css"
-  = javascript_include_tag "http://cdnjs.cloudflare.com/ajax/libs/knockout/2.3.0/knockout-min.js"
-  = javascript_include_tag "application"
-  = stylesheet_link_tag    "application"
-  = csrf_meta_tags
+  %head
+    %title Treefinger
+    = javascript_include_tag "application"
+    = stylesheet_link_tag    "application"
+    = csrf_meta_tags
+    = yield :head
   %body
     %header#main
       %section.session

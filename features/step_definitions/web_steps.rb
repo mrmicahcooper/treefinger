@@ -18,7 +18,11 @@ When /^I follow "(.+)"$/ do |link|
   click_link link
 end
 
-Then /^I (:?should) see "(.+)"$/ do |content|
+Then /^I should see "(.+)"$/ do |content|
+  page.should have_content(content)
+end
+
+Then /^I see "(.+)"$/ do |content|
   page.should have_content(content)
 end
 
