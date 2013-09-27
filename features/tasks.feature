@@ -1,5 +1,5 @@
+@javascript
 Feature: Tasks
-	@javascript
 	Scenario: User views tasks for a project
 		Given 1 user
 		And that user has the following project:

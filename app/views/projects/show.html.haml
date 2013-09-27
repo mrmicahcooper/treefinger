@@ -1,22 +1,32 @@
 = content_for :head do
   = stylesheet_link_tag    "codemirror-3.12/lib/codemirror.css"
-  = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"
+  = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"
+  = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-resource.js"
   :javascript
-    project_id = #{project.id}
+    project_id = "#{project.id}";
+    current_username = "#{current_user.username}";
 
 = content_for :project do
   %h2= current_project.name
 
-#project(ng-app ng-controller="project")
+#project(ng-controller="Project")
   %section#editor
   %section#tasks
     %ul(ng-repeat="task in tasks")
-      %li
+      %li(ng-class="{noted: task.noted}")
+        .left_arrow
+        .right_arrow
         {{task.name}}
         .actions
-          = link_to "notes", "#", "ng-click" => "showNotes(task.id)"
+          %a(href="#" ng-click="showNotes(task)") notes
   %section#notes
-    %ul.notes(ng-repeat="note in notes")
-      %li
-        %p.username(ng-bind="note.username")
-        %p.note(ng-bind="note.body")
+    .note_container
+      %ul.notes(ng-repeat="note in notes")
+        %li
+          %p.username(ng-bind="note.username")
+          %p.note(ng-bind="note.body")
+    %form.new_note(ng-submit="addNote()")
+      %fieldset
+        %textarea#note_text(placeholder="Note..." ng-model="noteText")
+      %fieldset.actions
+        %input(type="submit" value="Add note")

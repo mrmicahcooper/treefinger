@@ -33,4 +33,3 @@ end
 Then "I should see my username in the url" do
   page.current_path.should match /#{User.last.username}/
 end
-

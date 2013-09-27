@@ -190,7 +190,7 @@ section#tasks
     &:hover
       background: #616161
     &.active
-      .left_arrow, .right_arrow
+      .left_arrow
         display: block
         position: absolute
         width: 30px
@@ -199,6 +199,12 @@ section#tasks
         left: -19px
         top: 2px
         background: image-url("left_arrow.png") no-repeat
+    &.noted
+      .right_arrow
+        display: block
+        position: absolute
+        width: 30px
+        height: 22px
       .right_arrow
         right: -19px
         top: 2px
