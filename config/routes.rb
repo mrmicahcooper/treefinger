@@ -6,6 +6,7 @@ Treefinger::Application.routes.draw do
 
   resources :users, only: :new
 
+
   get '/sign_out', to: 'sessions#destroy', as: :sign_out
   post '/sign_in', to: 'sessions#create', as: :sign_in
 
@@ -14,6 +15,10 @@ Treefinger::Application.routes.draw do
 
   resources :tasks, only: [] do
     resources :notes, only: :index
+  end
+
+  resources :projects, only: [] do
+    resources :tasks, only: :index
   end
 
 end

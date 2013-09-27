@@ -13,3 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+function project($scope, $http){
+	$scope.notes = [];
+
+	$http.get('/projects/'+project_id+'/tasks').success(function(tasks){
+		$scope.tasks = tasks
+	});
+
+	$scope.showNotes = function(task_id){
+		var promise = $http.get('/tasks/'+task_id+'/notes');
+		promise.success(function(notes) {
+			$scope.notes = notes;
+		});
+	}
+};
