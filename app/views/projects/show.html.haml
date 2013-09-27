@@ -10,7 +10,9 @@
   %h2= current_project.name
 
 #project(ng-controller="Project")
+
   %section#editor
+
   %section#tasks
     %ul
       %li(ng-repeat="task in tasks" ng-class="{noted: task.noted}")
@@ -19,6 +21,7 @@
         {{task.name}}
         .actions
           %a(href="#" ng-click="showNotes(task)") notes
+
   %section#notes(ng-class="{active: noteAreVisible}")
     .note_container
       %ul.notes
