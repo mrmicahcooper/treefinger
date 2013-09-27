@@ -18,4 +18,5 @@
   %section#notes
     %ul.notes(ng-repeat="note in notes")
       %li
+        %p.username(ng-bind="note.username")
         %p.note(ng-bind="note.body")
