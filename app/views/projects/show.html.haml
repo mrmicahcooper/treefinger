@@ -12,17 +12,17 @@
 #project(ng-controller="Project")
   %section#editor
   %section#tasks
-    %ul(ng-repeat="task in tasks")
-      %li(ng-class="{noted: task.noted}")
+    %ul
+      %li(ng-repeat="task in tasks" ng-class="{noted: task.noted}")
         .left_arrow
         .right_arrow
         {{task.name}}
         .actions
           %a(href="#" ng-click="showNotes(task)") notes
-  %section#notes
+  %section#notes(ng-class="{active: noteAreVisible}")
     .note_container
-      %ul.notes(ng-repeat="note in notes")
-        %li
+      %ul.notes
+        %li(ng-repeat="note in notes")
           %p.username(ng-bind="note.username")
           %p.note(ng-bind="note.body")
     %form.new_note(ng-submit="addNote()")

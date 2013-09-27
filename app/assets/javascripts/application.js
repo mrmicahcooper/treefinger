@@ -25,6 +25,7 @@ window.App = angular.module("app", ["ngResource"]);
 App.controller("Project", function($scope, $http) {
 
 	$scope.notes = [];
+	$scope.noteAreVisible = false;
 
 	$http.get('/projects/'+project_id+'/tasks').success(function(tasks){
 		$scope.tasks = tasks
@@ -32,6 +33,7 @@ App.controller("Project", function($scope, $http) {
 
 	$scope.showNotes = function(task){
 		var promise;
+		$scope.noteAreVisible = true;
 		$scope.tasks.forEach(function(task) { task.noted = false; });
 		task.noted = true
 		promise = $http.get('/tasks/'+task.id+'/notes');
