@@ -11,4 +11,9 @@ Treefinger::Application.routes.draw do
 
   get '/:username', to: 'pages#dashboard', as: :dashboard
   get '/:username/:project_name', to: 'projects#show', as: :project
+
+  resources :tasks, only: [] do
+    resources :notes, only: :index
+  end
+
 end

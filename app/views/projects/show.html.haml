@@ -6,13 +6,27 @@
   %h2= current_project.name
 
 :javascript
-  function project($scope){
-    $scope.tasks = #{tasks}
-  }
+  function project($scope, $http){
+    $scope.tasks = #{tasks};
+    $scope.notes = [ {"body":"hello"} ];
 
-#project(ng-app)
+    $scope.showNotes = function(task_id){
+      var promise = $http.get('/tasks/'+task_id+'/notes');
+      promise.success(function(json) {
+        $scope.notes = json;
+      });
+    }
+  };
+
+#project(ng-app ng-controller="project")
   %section#editor
-  %section#tasks(ng-controller="project")
+  %section#tasks
     %ul(ng-repeat="task in tasks")
-      %li {{task.name}}
+      %li
+        {{task.name}}
+        .actions
+          = link_to "notes", "#", "ng-click" => "showNotes(task.id)"
   %section#notes
+    %ul.notes(ng-repeat="note in notes")
+      %li
+        %p.note(ng-bind="note.body")
