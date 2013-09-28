@@ -1,5 +1,6 @@
 /*
  *= require_self
+ *= require codemirror
  */
 
 @import "mixins"
@@ -183,6 +184,15 @@ section#content #project
 
 section#editor
   width: 32%
+  padding: 5px
+  +box-sizing
+  a
+    color: #9ace50
+    text-decoration: none
+    font-family: monaco, sans-serif
+    text-decoration: underline
+    &:hover
+      text-decoration: none
 
 section#tasks
   width: 30%

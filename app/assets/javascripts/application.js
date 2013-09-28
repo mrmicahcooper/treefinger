@@ -13,14 +13,35 @@
 //= require jquery
 //= require jquery_ujs
 //= require sugar
+//= require_tree .
 //= require codemirror
+//= require codemirror/keymaps/vim
+
+var dashboard = {
+
+	load_code_mirror: function(){
+		dashboard.editor = CodeMirror(document.getElementById('editor_textarea'), {
+			lineNumbers: true,
+			keyMap: 'vim',
+			indentWithTabs: true,
+			lineWrapping: true,
+			height: '900px',
+			tabSize: 2,
+		});
+	}
+
+};
+
+$(function(){
+	dashboard.load_code_mirror();
+});
 
 window.App = angular.module("app", ["ngResource"]);
 
-	App.config(['$httpProvider', function($httpProvider) {
-		$httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr("content");
-		$httpProvider.defaults.headers.common['Accept'] = "application/json";
-	}]);
+App.config(['$httpProvider', function($httpProvider) {
+	$httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr("content");
+	$httpProvider.defaults.headers.common['Accept'] = "application/json";
+}]);
 
 App.controller("Project", function($scope, $http) {
 
