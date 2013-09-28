@@ -11,6 +11,7 @@ gem 'pry-rails'
 gem 'rails', '4.0.0'
 gem 'puma'
 gem 'oj'
+gem 'codemirror-rails'
 
 group :assets do
   gem 'coffee-rails', '~> 4.0.0'

@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require sugar
-//= require_tree .
+//= require codemirror
 
 window.App = angular.module("app", ["ngResource"]);
 
