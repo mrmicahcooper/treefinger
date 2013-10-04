@@ -167,10 +167,10 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  authem (= 1.1.0)
+  authem
   capybara-webkit
   codemirror-rails
-  coffee-rails (~> 4.0.0)
+  coffee-rails
   cucumber-rails
   database_cleaner
   decent_exposure
@@ -182,7 +182,7 @@ DEPENDENCIES
   pg
   pry-rails
   puma
-  rails (= 4.0.0)
+  rails
   rspec-rails
-  sass-rails (~> 4.0.0)
-  uglifier (>= 1.0.3)
+  sass-rails
+  uglifier
