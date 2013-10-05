@@ -24,6 +24,7 @@ group :test, :developement do
   gem 'cucumber-rails'
   gem 'database_cleaner'
   gem 'fabrication'
+  gem 'jasmine'
   gem 'launchy'
   gem 'rspec-rails'
 end
