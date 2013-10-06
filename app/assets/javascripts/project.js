@@ -6,22 +6,20 @@ var Project = {
 			keyMap: 'vim',
 			indentWithTabs: true,
 			lineWrapping: true,
-			height: '900px',
 			tabSize: 2,
 		});
 	},
 
 	parse_task_text: function(){
 		taskText = this.editor.getValue();
-
 		taskStrings = taskText.split(/(?=\n\w)/)
 
 		Project.tasks = taskStrings.map(function(taskString){
 			console.log(new Task(taskString));
 
 		})
-
 	}
+
 };
 
 var Task = function(string){
