@@ -21,7 +21,7 @@ end
 
 group :test, :development do
   gem 'capybara-webkit'
-  gem 'cucumber-rails'
+  gem 'cucumber-rails', require: false
   gem 'database_cleaner'
   gem 'fabrication'
   gem 'jasmine'
