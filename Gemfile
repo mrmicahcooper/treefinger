@@ -19,7 +19,7 @@ group :assets do
   gem 'uglifier'
 end
 
-group :test, :developement do
+group :test, :development do
   gem 'capybara-webkit'
   gem 'cucumber-rails'
   gem 'database_cleaner'
