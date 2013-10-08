@@ -11,7 +11,9 @@
 #   - dist/**/*.js
 #
 src_files:
-  - assets/application.js
+  - app/assets/javascripts/project.js
+  - app/assets/javascripts/sugar.js
+  - app/assets/javascripts/treefinger.js
 
 # stylesheets
 #

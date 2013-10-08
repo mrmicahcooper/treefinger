@@ -19,15 +19,12 @@ var Project = {
 
 		})
 	}
-
 };
 
-var Task = function(string){
-	this.taskString = string;
-
-	this.title = function(){
-		return this.taskString.match(/^.+/);
-	}
+var Task = function(task_string){
+	this.taskString = task_string;
+	this.title = function(){ return this.taskString.match(/^.+/)[0]; };
+	this.description = function(){ return this.taskString.replace(this.title(),'') };
 };
 
 $(function(){
