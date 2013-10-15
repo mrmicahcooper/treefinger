@@ -1,13 +1,14 @@
 var task = function(taskString){
 
 	this.taskString = taskString;
-	this.title = function(){ return this.taskString.match(/^.+/)[0]; };
-	this.description = function(){ return this.taskString.replace(this.title(),'') };
+	this.name = function(){ return this.taskString.match(/^.+/)[0]; };
+	this.description = function(){ return this.taskString.replace(this.name(),'') };
 
 	return{
 		taskString: taskString,
-		title: this.title(),
-		description: this.description()
+		name: this.name(),
+		description: this.description(),
+		active: true
 	}
 
 };

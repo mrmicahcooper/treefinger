@@ -2,6 +2,7 @@
   = stylesheet_link_tag    "codemirror-3.12/lib/codemirror.css"
   = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"
   = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-resource.js"
+  = javascript_include_tag "application"
   :javascript
     project_id = "#{project.id}";
     current_username = "#{current_user.username}";
@@ -12,13 +13,12 @@
 #project(ng-controller="Project")
 
   %section#editor
-    %a(href="#") save tasks
+    %a(href="#" ng-click="saveTasks()") save tasks
     #editor_textarea
-    %a(href="#") save tasks
 
   %section#tasks
     %ul
-      %li(ng-repeat="task in tasks" ng-class="{noted: task.noted}")
+      %li(ng-repeat="task in tasks" ng-class="{noted: task.noted, active: task.active}")
         .left_arrow
         .right_arrow
         {{task.name}}

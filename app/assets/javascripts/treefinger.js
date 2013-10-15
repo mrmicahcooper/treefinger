@@ -44,7 +44,14 @@ App.controller("Project", function($scope, $http) {
 	};
 
 	$scope.saveTasks = function() {
-		tasks = Project.parse_task_text();
+		if (dashboard.taskText() ){
+			var taskStrings = new taskdown(dashboard.taskText()).taskStrings;
+
+			taskStrings.forEach(function(taskString){
+				$scope.tasks.push(new task(taskString))
+			})
+
+		}
 	};
 
 });

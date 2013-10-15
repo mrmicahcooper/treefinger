@@ -10,14 +10,14 @@ describe("task", function(){
 		})
 	})
 
-	describe("title", function(){
+	describe("name", function(){
 		it("is the first line of the taskString", function(){
-			expect(task.title).toEqual("User signs in")
+			expect(task.name).toEqual("User signs in")
 		})
 	})
 
-	describe("title", function(){
-		it("is the whole string except the title", function(){
+	describe("description", function(){
+		it("is the whole string except the name", function(){
 			expect(task.description).toEqual("\n Given I am on the home page\n  And I do this\n  Then this")
 		})
 	})
