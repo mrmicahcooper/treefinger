@@ -11,7 +11,7 @@ App.controller("Project", function($scope, $http) {
 	$scope.noteAreVisible = false;
 	$scope.taskText = "";
 
-	$http.get('/projects/'+project_id+'/tasks').success(function(tasks){
+	$http.get('/projects/'+window.project_id+'/tasks').success(function(tasks){
 		$scope.tasks = tasks
 	});
 
@@ -48,7 +48,8 @@ App.controller("Project", function($scope, $http) {
 			var taskStrings = new taskdown(dashboard.taskText()).taskStrings;
 
 			taskStrings.forEach(function(taskString){
-				$scope.tasks.push(new task(taskString))
+				task = new task(taskString)
+				$scope.tasks.push(task.save())
 			})
 
 		}

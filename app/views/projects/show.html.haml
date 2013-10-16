@@ -4,7 +4,7 @@
   = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-resource.js"
   = javascript_include_tag "application"
   :javascript
-    project_id = "#{project.id}";
+    window.project_id = "#{project.id}";
     current_username = "#{current_user.username}";
 
 = content_for :project do

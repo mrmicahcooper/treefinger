@@ -4,7 +4,6 @@
 //= require_tree .
 //= require codemirror
 //= require codemirror/keymaps/vim
-//= require project
 //= require task
 //= require taskdown
 //= require treefinger

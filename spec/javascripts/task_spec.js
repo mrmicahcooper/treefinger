@@ -1,6 +1,9 @@
 describe("task", function(){
 
-	var taskString = "User signs in\n Given I am on the home page\n  And I do this\n  Then this"
+	var description = "\n Given I am on the home page\n  And I do this\n  Then this"
+	var name =  "User signs in"
+
+	var taskString = name + description
 
 	task = new task(taskString)
 
@@ -12,15 +15,24 @@ describe("task", function(){
 
 	describe("name", function(){
 		it("is the first line of the taskString", function(){
-			expect(task.name).toEqual("User signs in")
+			expect(task.name()).toEqual(name)
 		})
 	})
 
 	describe("description", function(){
 		it("is the whole string except the name", function(){
-			expect(task.description).toEqual("\n Given I am on the home page\n  And I do this\n  Then this")
+			expect(task.description()).toEqual(description)
 		})
 	})
 
+	describe("toJSON", function(){
+		it("returns a json object of the attributes", function(){
+			expect(task.toJSON()).toEqual({
+				name:  name,
+				description: description,
+				active: true
+			})
+		})
+	})
 
 })

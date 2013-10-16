@@ -8,3 +8,6 @@ Then /^I see "(.+)" in the task list$/ do |content|
   end
 end
 
+Then /^the task "(.+)" is persisted$/ do |task_name|
+  expect(Task.where(name: task_name).first).to be_present
+end
