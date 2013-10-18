@@ -22,5 +22,4 @@ Feature: Tasks
 		And I follow "hexas"
 		And I type "This is a new task" into the task editor
 		And I follow "save tasks"
-		Then I see "This is a new task" in the task list
-		And the task "This is a new task" is persisted
+		Then "This is a new task" is saved and visible

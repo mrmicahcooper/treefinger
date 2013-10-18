@@ -11,18 +11,26 @@ var task = function(taskString){
 		$.ajax({
 			type: "POST",
 			url: url,
-			data: self.toJSON(),
-			success: function(response){ return response; },
+			data: self.toParams(),
 			dataType: "JSON"
 		})
+	}
 
+	this.toParams = function(){
+		return {
+			task:{
+				name: this.name(),
+				description: this.description(),
+				active: true
+			}
+		}
 	}
 
 	this.toJSON = function(){
 		return {
-			name: this.name(),
-			description: this.description(),
-			active: true
+				name: this.name(),
+				description: this.description(),
+				active: true
 		}
 	}
 

@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
 
   expose(:current_project) { current_user.projects.last || NilProject.new }
 
+  decent_configuration do
+    strategy DecentExposure::StrongParametersStrategy
+  end
+
 end
