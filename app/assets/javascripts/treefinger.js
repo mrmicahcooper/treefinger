@@ -52,7 +52,6 @@ App.controller("Project", function($scope, $http) {
 				new_task.save()
 				$scope.tasks.push(new_task.toJSON())
 			})
-
 		}
 	};
 
