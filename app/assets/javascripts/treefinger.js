@@ -49,8 +49,13 @@ App.controller("Project", function($scope, $http) {
 
 			taskStrings.forEach(function(taskString){
 				new_task = new task(taskString)
-				new_task.save()
-				$scope.tasks.push(new_task.toJSON())
+
+				new_task.save(function(response){
+					$scope.$apply(function(){
+						$scope.tasks.push(response);
+					});
+				})
+
 			})
 		}
 	};
