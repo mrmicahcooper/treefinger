@@ -22,6 +22,10 @@ var dashboard = {
 	taskText: function(){
 		text = this.editor.getValue()
 		return text || false
+	},
+
+	setEditorText: function(string){
+		this.editor.setValue(string)
 	}
 }
 

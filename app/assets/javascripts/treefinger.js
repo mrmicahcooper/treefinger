@@ -8,12 +8,21 @@ App.config(['$httpProvider', function($httpProvider) {
 App.controller("Project", function($scope, $http) {
 
 	$scope.notes = [];
-	$scope.noteAreVisible = false;
 	$scope.taskText = "";
+	$scope.noteAreVisible = false;
 
 	$http.get('/projects/'+window.project_id+'/tasks').success(function(tasks){
 		$scope.tasks = tasks
 	});
+
+	$scope.activeTasks = function(){
+		return $scope.tasks.findAll({active: true})
+	}
+
+	$scope.toggleActive = function(task){
+		task.active = !task.active;
+		$scope.renderActiveTasksInEditor()
+	}
 
 	$scope.showNotes = function(task){
 		var promise;
@@ -45,10 +54,10 @@ App.controller("Project", function($scope, $http) {
 
 	$scope.saveTasks = function() {
 		if (dashboard.taskText() ){
-			var taskStrings = new taskdown(dashboard.taskText()).taskStrings;
+			var task_strings = new taskdown(dashboard.taskText()).task_strings;
 
-			taskStrings.forEach(function(taskString){
-				new_task = new task(taskString)
+			task_strings.forEach(function(task_string){
+				new_task = new task(task_string)
 
 				new_task.save(function(response){
 					$scope.$apply(function(){
@@ -59,5 +68,14 @@ App.controller("Project", function($scope, $http) {
 			})
 		}
 	};
+
+	$scope.renderActiveTasksInEditor = function(){
+		var activeTaskStrings = $scope.activeTasks().map(function(task){
+			return task.task_string
+		})
+
+		var editorText = activeTaskStrings.join("\n")
+		dashboard.setEditorText(editorText)
+	}
 
 });

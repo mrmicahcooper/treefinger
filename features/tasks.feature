@@ -23,3 +23,11 @@ Feature: Tasks
 		And I type "This is a new task" into the task editor
 		And I follow "save tasks"
 		Then "This is a new task" is saved and visible
+
+	@javascript
+	Scenario: User views a task in the task editor
+		Given I am logged in viewing "Foshow" with the tasks:
+			| name      | description      | task_string                   |
+			| something | It's a hard task | something\n  It's a hard task |
+		When I view the "something" task
+		Then I see that task in the editor

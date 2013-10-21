@@ -10,3 +10,16 @@ Then /^"(.+)" is saved and visible$/ do |task_name|
   sleep(0.1)
   expect(Task.where(name: task_name).first).to be_present
 end
+
+Then "I see that task in the editor" do
+  within("#editor") do
+    expect(page).to have_content(@task.name)
+    expect(page).to have_content(@task.description)
+  end
+end
+
+When /^I view the "(.+)" task$/ do |task_name|
+  within("#tasks") do
+    click_link task_name
+  end
+end

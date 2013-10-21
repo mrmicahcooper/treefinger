@@ -3,18 +3,18 @@ describe("task", function(){
 	var description = "\n Given I am on the home page\n  And I do this\n  Then this"
 	var name =  "User signs in"
 
-	var taskString = name + description
+	var task_string = name + description
 
-	task = new task(taskString)
+	task = new task(task_string)
 
-	describe("taskString", function(){
+	describe("task_string", function(){
 		it("is the string passed in", function(){
-			expect(task.taskString).toEqual(taskString)
+			expect(task.task_string).toEqual(task_string)
 		})
 	})
 
 	describe("name", function(){
-		it("is the first line of the taskString", function(){
+		it("is the first line of the task_string", function(){
 			expect(task.name()).toEqual(name)
 		})
 	})
@@ -22,16 +22,6 @@ describe("task", function(){
 	describe("description", function(){
 		it("is the whole string except the name", function(){
 			expect(task.description()).toEqual(description)
-		})
-	})
-
-	describe("toJSON", function(){
-		it("returns a json object of the attributes", function(){
-			expect(task.toJSON()).toEqual({
-				name:  name,
-				description: description,
-				active: true
-			})
 		})
 	})
 

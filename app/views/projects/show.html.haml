@@ -21,7 +21,7 @@
       %li(ng-repeat="task in tasks" ng-class="{noted: task.noted, active: task.active}")
         .left_arrow
         .right_arrow
-        {{task.name}}
+        %a.name(href="#" ng-click="toggleActive(task)") {{task.name}}
         .actions
           %a(href="#" ng-click="showNotes(task)") notes
 

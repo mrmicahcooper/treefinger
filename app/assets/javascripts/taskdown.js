@@ -1,10 +1,10 @@
 var taskdown = function(projectString){
 
 	this.projectString = projectString
-	this.taskStrings = function(){ return projectString.split(/^(?=\w)/m)}
+	this.task_strings = function(){ return projectString.split(/^(?=\w)/m)}
 
 	return{
 		projectString: projectString,
-		taskStrings: this.taskStrings()
+		task_strings: this.task_strings()
 	}
 };

@@ -1,8 +1,8 @@
-var task = function(taskString){
+var task = function(task_string){
 
-	this.taskString = taskString;
-	this.name = function(){ return this.taskString.match(/^.+/)[0]; };
-	this.description = function(){ return this.taskString.replace(this.name(),'') };
+	this.task_string = task_string;
+	this.name = function(){ return this.task_string.match(/^.+/)[0]; };
+	this.description = function(){ return this.task_string.replace(this.name(),'') };
 
 	this.save = function(save_callback){
 
@@ -23,6 +23,7 @@ var task = function(taskString){
 	this.toParams = function(){
 		return {
 			task:{
+				task_string: this.task_string,
 				name: this.name(),
 				description: this.description(),
 				active: true
