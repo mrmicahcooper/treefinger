@@ -14,6 +14,7 @@ var task = function(task_string){
 			url: url,
 			data: self.toParams(),
 			success: function(response){
+				response.active = true
 				save_callback(response)
 			},
 			dataType: "JSON"
