@@ -27,4 +27,5 @@ group :test, :development do
   gem 'jasmine'
   gem 'launchy'
   gem 'rspec-rails'
+  gem 'paratrooper'
 end
