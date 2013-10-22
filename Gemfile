@@ -13,6 +13,8 @@ gem 'puma'
 gem 'oj'
 gem 'codemirror-rails'
 
+gem 'rails_12factor', group: :production
+
 group :assets do
   gem 'coffee-rails'
   gem 'sass-rails'
