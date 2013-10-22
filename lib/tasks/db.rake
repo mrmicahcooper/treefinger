@@ -1,4 +1,3 @@
-require 'fabrication'
 namespace :db do
   desc "Populate the project with new data"
 
