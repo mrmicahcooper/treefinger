@@ -5,7 +5,6 @@ var task = function(task_string){
 	this.description = function(){ return this.task_string.replace(this.name(),'') };
 
 	this.save = function(save_callback){
-
 		var url = '/projects/'+window.project_id+'/tasks',
 		self = this;
 

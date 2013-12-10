@@ -14,16 +14,6 @@ Feature: Tasks
 		Then I see "Do this"
 		And I see "Don't do that"
 
-	Scenario: User adds a task for a project
-		Given 1 user
-		And that user has the following project:
-			| name | hexas |
-		When I sign in as that user
-		And I follow "hexas"
-		And I type "This is a new task" into the task editor
-		And I follow "save tasks"
-		Then "This is a new task" is saved and visible
-
 	@javascript
 	Scenario: User views a task in the task editor
 		Given I am logged in viewing "Foshow" with the tasks:

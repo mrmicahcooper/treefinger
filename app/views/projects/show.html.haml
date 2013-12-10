@@ -1,5 +1,4 @@
 = content_for :head do
-  = stylesheet_link_tag    "codemirror-3.12/lib/codemirror.css"
   = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"
   = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-resource.js"
   = javascript_include_tag "application"
@@ -13,7 +12,6 @@
 #project(ng-controller="Project")
 
   %section#editor
-    %a(ng-click="saveTasks()") save tasks
     #editor_textarea
 
   %section#tasks

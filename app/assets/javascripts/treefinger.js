@@ -52,23 +52,6 @@ App.controller("Project", function($scope, $http) {
 		});
 	};
 
-	$scope.saveTasks = function() {
-		if (dashboard.taskText() ){
-			var task_strings = new taskdown(dashboard.taskText()).task_strings;
-
-			task_strings.forEach(function(task_string){
-				new_task = new task(task_string)
-
-				new_task.save(function(response){
-					$scope.$apply(function(){
-						$scope.tasks.push(response);
-					});
-				})
-
-			})
-		}
-	};
-
 	$scope.renderActiveTasksInEditor = function(){
 		var activeTaskStrings = $scope.activeTasks().map(function(task){
 			return task.task_string

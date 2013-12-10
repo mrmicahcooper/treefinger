@@ -11,7 +11,6 @@ gem 'pry-rails'
 gem 'rails'
 gem 'puma'
 gem 'oj'
-gem 'codemirror-rails'
 
 gem 'rails_12factor', group: :production
 
