@@ -182,27 +182,38 @@ section#content #project
 
 section#editor
   width: 32%
-  padding: 5px
+  padding: 0 10px
+  font-size: 14px
   +box-sizing
   font-family: monaco, sans-serif
-  .CodeMirror
-    font-family: monaco, sans-serif
-  a
-    color: #9ace50
-    text-decoration: none
-    text-decoration: underline
-    &:hover
-      text-decoration: none
-
-
+  line-height: 21px
+  outline: 0px
+  height: 500px
+  font-family: monaco, sans-serif
+  div
+    display: block
+    min-height: 14px
+    width: 100%
+    border: none
+    white-space: pre
+    +tab-size(2)
+    border-left: solid 1px #605e5e
+  .title
+    color: #5db7d9
+    font-weight: bold
+    padding-left: 2px
+  .description
+    color: #222222
+    white-space: pre
+    padding-left: 2px
 
 section#tasks
   width: 30%
   font-family: monaco, sans-serif
   font-size: 13px
   a.name
+    display: inline-block
     color: #9ace50
-    padding: 7px 0
     text-decoration: none
     &:hover
       text-decoration: underline

@@ -11,8 +11,14 @@
 
 #project(ng-controller="Project")
 
-  %section#editor
-    #editor_textarea
+  %section#editor(contenteditable="true" ng-focus ="initializeEditor()" ng-keydown = "taskdownEdit()")
+
+    .title{"ng-repeat-start" => "task in activeTasks",
+      "data-task-id"       => "{{task.id}}",
+      "task-edit" => "{{task}}"}<>{{ task.name }}
+
+    .description{"ng-repeat-end" => "task in activeTasks",
+                 "data-task-id"  => "{{task.id}}"}<>{{task.description}}
 
   %section#tasks
     %ul

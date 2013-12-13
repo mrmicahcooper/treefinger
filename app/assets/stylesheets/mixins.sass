@@ -108,3 +108,7 @@ $prefixes: moz webkit o ms khtml
   &:hover
     +box-shadow(none)
 
+= tab-size($val)
+  tab-size: $val
+  @each $prefix in moz, o
+    -#{$prefix}-tab-size: $val
