@@ -1,4 +1,4 @@
-ruby '2.0.0'
+ruby '2.1.0'
 
 source 'https://rubygems.org'
 
@@ -8,7 +8,7 @@ gem 'haml-rails'
 gem 'jquery-rails'
 gem 'pg'
 gem 'pry-rails'
-gem 'rails'
+gem 'rails', '>= 4.0.0'
 gem 'puma'
 gem 'oj'
 
