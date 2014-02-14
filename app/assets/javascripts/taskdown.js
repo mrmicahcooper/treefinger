@@ -40,12 +40,17 @@ var taskdown = {
     };
 
     if ($el.hasClass('title')){
-      if (!$(el.parentElement.nextElementSibling).hasClass('description')) {
-        document.execCommand('insertHTML', true, '<div class=description>')
+      var description = this.getDescription(el)
+      if (description){
+        var currentText = description.text()
+        description.html(indent + stringAfterCaret + "\n" + currentText)
+        this.setCaretTo(1, description.get(0))
       }
-      document.execCommand('insertText', true, indent + stringAfterCaret)
-      this.setCaretTo(1)
-      return false;
+      else{
+        document.execCommand('insertHTML', true, '<div class=description>')
+        document.execCommand('insertText', true, indent + stringAfterCaret)
+        this.setCaretTo(1)
+      }
     }
 
     if ($el.hasClass('description')){
@@ -66,6 +71,12 @@ var taskdown = {
     if(el.nodeName != 'SECTION'){
       document.execCommand('insertText', true, "  ")
     }
+  },
+
+  getDescription: function(el){
+    var $nextEl = $(el.parentElement.nextElementSibling)
+    if ($nextEl.hasClass('description')){ return $nextEl }
+    return false;
   },
 
   doubleLineBreak: function(el){
@@ -93,12 +104,13 @@ var taskdown = {
     return window.getSelection()
   },
 
-  setCaretTo: function(caretPosition) {
-    var newRange  = this.range(),
-    selection = this.selection();
+  setCaretTo: function(caretPosition, el) {
+     var selection = this.selection(),
+         newRange  = this.range(),
+         startNodeElement = el ? el.childNodes[0] : newRange.commonAncestorContainer;
 
-    newRange.setStart(newRange.commonAncestorContainer, caretPosition)
-    newRange.setEnd(newRange.commonAncestorContainer, caretPosition)
+    newRange.setStart(startNodeElement, caretPosition)
+    newRange.setEnd(startNodeElement, caretPosition)
     selection.removeAllRanges()
     selection.addRange(newRange)
   }
