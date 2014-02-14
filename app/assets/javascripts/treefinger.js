@@ -66,13 +66,3 @@ App.controller("Project", function($scope, $http) {
   }
 
 });
-
-App.directive('taskEdit', function(){
-  return {
-    restrict: "A",
-    link: function(scope, el, attrs){
-      debugger
-      console.log('directive registered')
-    }
-  }
-})

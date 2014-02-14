@@ -10,11 +10,11 @@ namespace :db do
     user = Fabricate(:user)
     puts "Created user: #{user.username}"
 
-    2.times { Fabricate(:project, user: user) }
-    puts "Created tasks"
+    Fabricate(:project, user: user)
+    puts "Created project"
 
     Project.all.each_with_index do |p, i|
-      Fabricate(:task, name: "task#{i}", project: p )
+      Fabricate(:task, name: "The task title for task#{i}", pr ject: p )
     end
     puts "Created tasks"
 
