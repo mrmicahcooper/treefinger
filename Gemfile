@@ -29,4 +29,6 @@ group :test, :development do
   gem 'launchy'
   gem 'rspec-rails'
   gem 'paratrooper'
+  gem 'teaspoon'
+  gem 'phantomjs', '>=1.8.1.1'
 end
