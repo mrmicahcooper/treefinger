@@ -4,6 +4,7 @@ var taskdown = {
 
   normal: function(el){
     if(el.nodeName == 'SECTION'){
+      document.execCommand('insertHTML', true, '<div class="task">')
       document.execCommand('insertHTML', true, '<div class="title">')
     }
   },
@@ -30,9 +31,10 @@ var taskdown = {
       if (el.textContent == "") {
         document.execCommand('insertText', true, " ")
       }
-      document.execCommand('insertHTML', true, '<div class=title>')
+      document.execCommand('insertHTML', true, '<div class=task></div>')
+      document.execCommand('insertHTML', true, '<div class=title></div>')
       document.execCommand('insertText', true, stringAfterCaret)
-      editor.setCaretTo(0)
+      editor.outdentTask()
       return false;
     };
 
@@ -44,11 +46,10 @@ var taskdown = {
         editor.setCaretTo(1, description.get(0))
       }
       else{
-        document.execCommand('insertHTML', true, '<div class=description>')
+        document.execCommand('insertHTML', true, '<div class=description></div>')
         document.execCommand('insertText', true, indent + stringAfterCaret)
         editor.setCaretTo(1)
       }
-      treefinger.saveTask(el);
     }
 
     if ($el.hasClass('description')){
@@ -63,7 +64,6 @@ var taskdown = {
     if(el.nodeName != 'SECTION'){
       document.execCommand('insertText', true, "  ")
     }
-  },
-
+  }
 
 }

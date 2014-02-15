@@ -3,5 +3,5 @@
 //= require sugar
 //= require app
 //= require taskdown
-//= require editor
 //= require treefinger
+//= require editor

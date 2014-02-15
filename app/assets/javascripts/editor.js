@@ -23,8 +23,13 @@ var editor = {
     return fullString.length - stringAfterCaret.length
   },
 
-  range: function(){
+  range: function(selection){
+    if (selection) {
+      return selection.getRangeAt(0)
+    }
+    else{
     return this.selection().getRangeAt(0)
+    }
   },
 
   selection: function(){
@@ -32,14 +37,22 @@ var editor = {
   },
 
   setCaretTo: function(caretPosition, el) {
-     var selection = this.selection(),
-         newRange  = this.range(),
-         startNodeElement = el ? el.childNodes[0] : newRange.commonAncestorContainer;
+    var selection = this.selection(),
+        newRange  = this.range(),
+        startNodeElement = el ? el.childNodes[0] : newRange.commonAncestorContainer;
 
     newRange.setStart(startNodeElement, caretPosition)
     newRange.setEnd(startNodeElement, caretPosition)
     selection.removeAllRanges()
     selection.addRange(newRange)
+  },
+
+  outdentTask: function(){
+    var selection = this.selection(),
+        $el        = $(selection.baseNode).closest('.task')
+
+    $el.insertAfter($el.parent());
+    editor.setCaretTo(0, $el.get(0))
   },
 
   shouldDoNothing: function(el){

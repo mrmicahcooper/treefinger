@@ -5,6 +5,18 @@ App.config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.headers.common['Accept'] = "application/json";
 }]);
 
+App.directive("taskdown", function(){
+  return {
+    restrict: "A",
+    link: function(){
+      debugger
+    },
+    compile: function(){
+      debugger
+    }
+  }
+})
+
 App.controller("Project", function($scope, $http) {
 
   $scope.notes = [];
