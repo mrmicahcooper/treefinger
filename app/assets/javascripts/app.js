@@ -5,17 +5,6 @@ App.config(['$httpProvider', function($httpProvider) {
   $httpProvider.defaults.headers.common['Accept'] = "application/json";
 }]);
 
-App.directive("taskdown", function(){
-  return {
-    restrict: "A",
-    link: function(){
-      debugger
-    },
-    compile: function(){
-      debugger
-    }
-  }
-})
 
 App.controller("Project", function($scope, $http) {
 
@@ -27,14 +16,8 @@ App.controller("Project", function($scope, $http) {
     $scope.tasks = tasks
   });
 
-  $scope.activeTasks = [];
-  $scope.reloadActiveTasks = function(callback){
-    $scope.activeTasks = $scope.tasks.findAll({active: true})
-  }
-
   $scope.toggleActive = function(task){
     task.active = !task.active;
-    $scope.reloadActiveTasks()
   }
 
   $scope.showNotes = function(task){
@@ -73,4 +56,3 @@ App.controller("Project", function($scope, $http) {
   }
 
 });
-
