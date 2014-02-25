@@ -1,58 +1,28 @@
-window.App = angular.module("app", ["ngResource"]);
+var App = App || {
 
-App.config(['$httpProvider', function($httpProvider) {
-  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr("content");
-  $httpProvider.defaults.headers.common['Accept'] = "application/json";
-}]);
+  tasks_path: '/projects/' + window.project_id + '/tasks',
 
+  init: function(){
+    this.loadTasks();
+  },
 
-App.controller("Project", function($scope, $http) {
+  loadTasks: function(){
+    var self = this;
+    $.get(
+      this.tasks_path,
+      function(response){
+        self.tasks = response.map(function(rawTask){
+          newTask = new App.Task(rawTask)
+          $('#tasks ul').append(newTask.listPartial());
+          return newTask;
+        }) }
 
-  $scope.notes = [];
-  $scope.taskText = "";
-  $scope.noteAreVisible = false;
-
-  $http.get('/projects/'+window.project_id+'/tasks').success(function(tasks){
-    $scope.tasks = tasks
-  });
-
-  $scope.toggleActive = function(task){
-    task.active = !task.active;
+    );
   }
 
-  $scope.showNotes = function(task){
-    var promise;
-    $scope.noteAreVisible = true;
-    $scope.tasks.forEach(function(task) { task.noted = false; });
-    task.noted = true
-    promise = $http.get('/tasks/'+task.id+'/notes');
-    promise.success(function(notes) {
-      $scope.notes = notes;
-    });
-  };
 
-  $scope.addNote = function() {
-    var currentTask = $scope.tasks.find(function(task) {
-      return task.noted == true
-    });
+};
 
-    $http.post(
-      '/tasks/'+currentTask.id+'/notes', {
-      note: { body: $scope.noteText}
-    }
-    ).success(function(){
-      $scope.notes.push({
-        body: $scope.noteText, username: current_username
-      });
-      $scope.noteText = "";
-    });
-  };
-
-  $scope.taskdownEdit = function(){
-    var $editor = $(event.currentTarget),
-    trackedKey = taskdown.trackedKeys[event.keyCode] || 'normal'
-    el = window.getSelection().baseNode
-    taskdown[trackedKey](el)
-  }
-
+$(function(){
+  App.init();
 });

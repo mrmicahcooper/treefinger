@@ -1,39 +1,27 @@
 = content_for :head do
-  = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.js"
-  = javascript_include_tag "//ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular-resource.js"
-  = javascript_include_tag "application"
   :javascript
     window.project_id = "#{project.id}";
     current_username = "#{current_user.username}";
+= javascript_include_tag "application"
 
 = content_for :project do
   %h2= current_project.name
 
 #project(ng-controller="Project")
 
-  %section#editor(contenteditable="true" ng-focus ="initializeEditor()" ng-keydown = "taskdownEdit()")
-
-    .task(ng-repeat="task in tasks" ng-show="task.active == true")
-      .title<>{{ task.name }}
-      .description<>{{task.description}}
+  %section#editor(contenteditable="true")
 
   %section#tasks
     %ul
-      %li(ng-repeat="task in tasks" ng-class="{noted: task.noted, active: task.active}")
-        .left_arrow
-        .right_arrow
-        %a.name(ng-click="toggleActive(task)") {{task.name}}
-        .actions
-          %a(ng-click="showNotes(task)") notes
 
   %section#notes(ng-class="{active: noteAreVisible}")
-    .note_container
-      %ul.notes
-        %li(ng-repeat="note in notes")
-          %p.username {{ note.username }}
-          %p.note {{ note.body }}
-    %form.new_note(ng-submit="addNote()")
-      %fieldset
-        %textarea#note_text(placeholder="Note..." ng-model="noteText")
-      %fieldset.actions
-        %input(type="submit" value="Add note")
+    -# .note_container
+    -#   %ul.notes
+    -#     %li(ng-repeat="note in notes")
+    -#       %p.username {{ note.username }}
+    -#       %p.note {{ note.body }}
+    -# %form.new_note(ng-submit="addNote()")
+    -#   %fieldset
+    -#     %textarea#note_text(placeholder="Note..." ng-model="noteText")
+    -#   %fieldset.actions
+    -#     %input(type="submit" value="Add note")

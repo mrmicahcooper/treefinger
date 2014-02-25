@@ -14,7 +14,7 @@ namespace :db do
     puts "Created project"
 
     Project.all.each_with_index do |p, i|
-      Fabricate(:task, name: "The task title for task#{i}", pr ject: p )
+      Fabricate(:task, name: "The task title for task#{i}", project: p )
     end
     puts "Created tasks"
 
