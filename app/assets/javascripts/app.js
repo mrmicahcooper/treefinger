@@ -13,10 +13,9 @@ var App = App || {
       function(response){
         self.tasks = response.map(function(rawTask){
           newTask = new App.Task(rawTask)
-          $('#tasks ul').append(newTask.listPartial());
+          $('#tasks ul').append(newTask.listItem());
           return newTask;
         }) }
-
     );
   }
 

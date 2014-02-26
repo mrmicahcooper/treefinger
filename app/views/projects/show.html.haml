@@ -15,13 +15,10 @@
     %ul
 
   %section#notes(ng-class="{active: noteAreVisible}")
-    -# .note_container
-    -#   %ul.notes
-    -#     %li(ng-repeat="note in notes")
-    -#       %p.username {{ note.username }}
-    -#       %p.note {{ note.body }}
-    -# %form.new_note(ng-submit="addNote()")
-    -#   %fieldset
-    -#     %textarea#note_text(placeholder="Note..." ng-model="noteText")
-    -#   %fieldset.actions
-    -#     %input(type="submit" value="Add note")
+    .note_container
+      %ul.notes
+    %form.new_note(ng-submit="addNote()")
+      %fieldset
+        %textarea#note_text(placeholder="Note..." ng-model="noteText")
+      %fieldset.actions
+        %input(type="submit" value="Add note")
