@@ -1,26 +1,21 @@
-var App = App || {
+window.App = window.App || {};
 
-  tasks_path: '/projects/' + window.project_id + '/tasks',
+(function(namespace) {
 
-  init: function(){
-    this.loadTasks();
-  },
+function TreefingerApp() {
+  this.taskList = new namespace.TaskList(window.project_id);
+  this.editor = new namespace.Editor('#editor');
 
-  loadTasks: function(){
-    var self = this;
-    $.get(
-      this.tasks_path,
-      function(response){
-        self.tasks = response.map(function(rawTask){
-          newTask = new App.Task(rawTask)
-          $('#tasks ul').append(newTask.taskListItem());
-          return newTask;
-        }) }
-    );
-  }
+  $(this.editor).on('task', $.proxy(function(task) {
+    this.taskList.addTask(task);
+  }, this));
+}
 
-};
+namespace.TreefingerApp = TreefingerApp;
+
+})(App);
 
 $(function(){
-  App.init();
+  var application = new App.TreefingerApp();
 });
+

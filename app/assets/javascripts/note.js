@@ -6,7 +6,7 @@ var App = App || {};
     this.body = note['body'];
   }
 
-  Node.prototype.listPartial = function(){
+  Note.prototype.partial = function(){
     return "<li><p class='username'>"+this.username+"</p><p class='note'>"+this.body+"</p></li>"
   }
 

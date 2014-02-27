@@ -1,8 +1,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require sugar
-//= require app
 //= require task
 //= require note
+//= require task_list
 //= require taskdown
 //= require editor
+//= require app
