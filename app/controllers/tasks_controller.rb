@@ -11,6 +11,7 @@ class TasksController < ApplicationController
   def create
     render json: task if task.save
   end
+  alias update create
 
   private
 

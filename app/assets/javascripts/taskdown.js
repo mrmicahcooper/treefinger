@@ -80,7 +80,7 @@ window.App = window.App || {};
    Taskdown.prototype.normal = function(){
       var el = selection().baseNode;
       if(el.nodeName == 'SECTION'){
-        document.execCommand('insertHTML', true, '<div class="task">')
+        document.execCommand('insertHTML', true, '<div class="task active">')
         document.execCommand('insertHTML', true, '<div class="title">')
       }
     };
@@ -109,24 +109,14 @@ window.App = window.App || {};
 
         var $task = $el.parent();
 
-        $.ajax({
-          url: '/projects/'+this.projectId+'/tasks',
-          method: 'POST',
-          dataType: 'json',
-          data: {
-            task: {
-              name: $task.find('.title').text(),
-              description: $task.find('.description').text()
-            }
-          },
-          success: $.proxy(function(taskResponse) {
-            $task.attr('data-id', taskResponse.id)
-            $(this).trigger('task', [new App.Task(taskResponse)])
-          }, this)
-        });
+        if($task.data('id'))
+          this.updateTask($task)
+        else
+          this.createNewTask($task)
 
-        document.execCommand('insertHTML', true, '<div class=task></div>')
-        document.execCommand('insertHTML', true, '<div class=title></div>')
+
+        document.execCommand('insertHTML', true, '<div class="task active"></div>')
+        document.execCommand('insertHTML', true, '<div class="title"></div>')
         document.execCommand('insertText', true, stringAfterCaret)
         outdentTask()
 
@@ -169,6 +159,44 @@ window.App = window.App || {};
 
       this[key]();
     }
+
+    Taskdown.prototype.createNewTask = function($task) {
+      $.ajax({
+        url: '/projects/'+this.projectId+'/tasks',
+        method: 'POST',
+        dataType: 'json',
+        data: {
+          task: {
+            name: $task.find('.title').text(),
+            description: $task.find('.description').text()
+          }
+        },
+        success: $.proxy(function(taskResponse) {
+          taskResponse.active = 'active';
+          $task.attr('data-id', taskResponse.id)
+          $(this).trigger('createTask', [new App.Task(taskResponse)])
+        }, this)
+      });
+    }
+
+    Taskdown.prototype.updateTask = function($task){
+      $.ajax({
+        url: '/projects/'+this.projectId+'/tasks/'+$task.data('id'),
+        method: 'PUT',
+        dataType: 'json',
+        data: {
+          task: {
+            name: $task.find('.title').text(),
+            description: $task.find('.description').text()
+          }
+        },
+        success: $.proxy(function(taskResponse) {
+          $(this).trigger('updateTask', [taskResponse])
+        }, this)
+      });
+    }
+
+
 
 
   namespace.Taskdown = Taskdown;

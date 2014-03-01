@@ -8,7 +8,8 @@ window.App = window.App || {};
   }
 
   Editor.prototype.bindEvents = function() {
-    $(this.taskDown).on('task', $.proxy(this.taskAdded, this));
+    $(this.taskDown).on('createTask', $.proxy(this.createTask, this));
+    $(this.taskDown).on('updateTask', $.proxy(this.updateTask, this));
 
     this.$el.keydown($.proxy(function(event){
       this.taskDown.keyDown(event.which, function() {
@@ -17,10 +18,18 @@ window.App = window.App || {};
     }, this));
   }
 
-  Editor.prototype.taskAdded = function(event, task) {
+  Editor.prototype.createTask = function(event, task) {
     var $task = this.$el.find("[data-id=" + task.id + "]");
     var index = this.$el.find(".task").index($task);
-    $(this).trigger('task', [task, index]);
+    $(this).trigger('createTask', [task, index]);
+  }
+
+  Editor.prototype.updateTask = function(event, taskResponse){
+    $(this).trigger('updateTask', [taskResponse]);
+  }
+
+  Editor.prototype.displayTask = function(id) {
+    this.$el.find('div[data-id='+id+']').toggle();
   }
 
   namespace.Editor = Editor;

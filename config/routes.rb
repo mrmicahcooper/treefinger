@@ -18,7 +18,7 @@ Treefinger::Application.routes.draw do
   end
 
   resources :projects, only: [] do
-    resources :tasks, only: :index
+    resources :tasks, only: [:index, :update]
     resource  :tasks, only: :create
   end
 
