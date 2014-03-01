@@ -26,9 +26,9 @@ window.App = window.App || {};
     return fullString.length - stringAfterCaret.length
   }
 
-  function range(selection){
-    if (selection)
-      return selection.getRangeAt(0)
+  function range(sel){
+    if (sel)
+      return sel.getRangeAt(0)
     else
       return selection().getRangeAt(0)
   }
@@ -38,19 +38,19 @@ window.App = window.App || {};
   }
 
   function setCaretTo(caretPosition, el) {
-    var selection        = selection();
+    var sel        = selection();
     var newRange         = range();
     var startNodeElement = el ? el.childNodes[0] : newRange.commonAncestorContainer;
 
     newRange.setStart(startNodeElement, caretPosition)
     newRange.setEnd(startNodeElement, caretPosition)
-    selection.removeAllRanges()
-    selection.addRange(newRange)
+    sel.removeAllRanges()
+    sel.addRange(newRange)
   }
 
   function outdentTask(){
-    var selection = selection(),
-        $el        = $(selection.baseNode).closest('.task')
+    var sel = selection(),
+        $el = $(sel.baseNode).closest('.task')
 
     $el.insertAfter($el.parent());
     setCaretTo(0, $el.get(0))
@@ -68,8 +68,9 @@ window.App = window.App || {};
 
   // Taskdown FTW!!!
 
-  function Taskdown(editor) {
+  function Taskdown(editor,projectId) {
     this.editor = editor;
+    this.projectId = projectId;
   }
 
    Taskdown.prototype.trackedKeys = function(keyCode) {
@@ -85,7 +86,8 @@ window.App = window.App || {};
     };
 
     Taskdown.prototype.enter = function() {
-      var $el       = $(selection().parentNode);
+      var el        = selection().baseNode;
+      var $el       = $(el.parentNode);
       var indention = indent(el.textContent);
       var range     = selection().getRangeAt(0);
 
@@ -101,9 +103,28 @@ window.App = window.App || {};
       }
 
       if (doubleLineBreak(el)) {
-        if (el.textContent == "") {
-          document.execCommand('insertText', true, " ")
-        }
+        // if (el.textContent == "") {
+        //   document.execCommand('insertText', true, " ")
+        // }
+
+        var $task = $el.parent();
+
+        $.ajax({
+          url: '/projects/'+this.projectId+'/tasks',
+          method: 'POST',
+          dataType: 'json',
+          data: {
+            task: {
+              name: $task.find('.title').text(),
+              description: $task.find('.description').text()
+            }
+          },
+          success: $.proxy(function(taskResponse) {
+            $task.attr('data-id', taskResponse.id)
+            $(this).trigger('task', [new App.Task(taskResponse)])
+          }, this)
+        });
+
         document.execCommand('insertHTML', true, '<div class=task></div>')
         document.execCommand('insertHTML', true, '<div class=title></div>')
         document.execCommand('insertText', true, stringAfterCaret)
@@ -141,9 +162,8 @@ window.App = window.App || {};
       }
     }
 
-    Taskdown.prototype.keyDown = function(event, keyCaughtCallback) {
-      var key = this.trackedKeys(event.which),
-
+    Taskdown.prototype.keyDown = function(keyCode, keyCaughtCallback) {
+      var key = this.trackedKeys(keyCode);
       if (key != 'normal')
         keyCaughtCallback && keyCaughtCallback();
 

@@ -4,10 +4,10 @@ window.App = window.App || {};
 
 function TreefingerApp() {
   this.taskList = new namespace.TaskList(window.project_id);
-  this.editor = new namespace.Editor('#editor');
+  this.editor = new namespace.Editor('#editor', window.project_id);
 
-  $(this.editor).on('task', $.proxy(function(task) {
-    this.taskList.addTask(task);
+  $(this.editor).on('task', $.proxy(function(event, task, editorIndex) {
+    this.taskList.addTask(task, editorIndex);
   }, this));
 }
 

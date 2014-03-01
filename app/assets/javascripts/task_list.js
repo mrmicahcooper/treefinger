@@ -3,7 +3,9 @@ window.App = window.App || {};
 (function(namespace) {
   function TaskList(project_id) {
     this.project_id = project_id;
+    this.$el = $('#tasks ul');
     this.loadTasks();
+
   }
 
   TaskList.prototype.tasksPath = function() {
@@ -15,11 +17,18 @@ window.App = window.App || {};
   }
 
   TaskList.prototype.taskResponse = function(response) {
-    this.tasks = response.map(function(rawTask){
+    response.map($.proxy(function(rawTask){
       newTask = new App.Task(rawTask)
-      $('#tasks ul').append(newTask.taskListItem());
+      this.$el.append(newTask.taskListItem());
       return newTask;
-    })
+    }, this));
+  }
+
+  TaskList.prototype.addTask = function(task, index){
+    if(index == 0)
+      this.$el.prepend(task.taskListItem());
+    else
+      this.$el.find('li').eq(index - 1).after(task.taskListItem());
   }
 
   namespace.TaskList = TaskList;

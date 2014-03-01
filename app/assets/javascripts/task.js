@@ -2,9 +2,9 @@ window.App = window.App || {};
 
 (function(namespace){
   Task = function(task){
-    this.name        = task['name'];
-    this.description = task['description'];
-    this.id          = task['id'];
+    this.name        = task.name;
+    this.description = task.description;
+    this.id          = task.id;
     this._notes_path = "/tasks/"+this.id+"/notes";
   };
 
