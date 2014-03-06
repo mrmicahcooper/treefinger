@@ -22,6 +22,11 @@ window.App = window.App || {};
         event.preventDefault();
       });
     }, this));
+
+    this.$el.click($.proxy(function(event){
+      this.taskDown.click();
+    }, this));
+
   }
 
   Editor.prototype.createTask = function(event, task) {

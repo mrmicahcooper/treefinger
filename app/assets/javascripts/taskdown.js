@@ -110,6 +110,11 @@ window.App = window.App || {};
     }[keyCode] || 'normal';
   }
 
+  //On click event
+  Taskdown.prototype.click = function(){
+    this.saveTaskOnBlur();
+  }
+
   Taskdown.prototype.up = function(){
     this.saveTaskOnBlur();
   }
