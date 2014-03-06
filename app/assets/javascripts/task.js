@@ -9,9 +9,18 @@ window.App = window.App || {};
     this._notes_path = "/tasks/"+this.id+"/notes";
   };
 
+  Task.prototype.taskClass = function(){
+    if(this.active)
+      return 'task active'
+    else
+      return 'task'
+  }
+
   Task.prototype.activeClass = function(){
     if(this.active)
-      return ' active'
+      return "class='active'"
+    else
+      return ''
   }
 
   Task.prototype.taskListItem = function(){
@@ -20,7 +29,7 @@ window.App = window.App || {};
 
   Task.prototype.listPartial = function(){
     var model = this;
-    this.tasks = $list = $("<li class='"+this.activeClass()+"'><div class='left_arrow'></div><div class=right_arrow></div><a class='name' data-id='"+this.id+"'>"+this.name+"</a><div class='actions'><a>notes</a></div></li>")
+    this.tasks = $list = $("<li "+this.activeClass()+"><div class='left_arrow'></div><div class=right_arrow></div><a class='name' data-id='"+this.id+"'>"+this.name+"</a><div class='actions'><a>notes</a></div></li>")
     if(model.active)
       $list.addClass('active')
     $list.find('.actions a').click(function(){ model.loadNotes() })
@@ -37,7 +46,7 @@ window.App = window.App || {};
   }
 
   Task.prototype.editorPartial = function(){
-    return "<div data-id='"+this.id+"' class='task'" +this.activeClass()+ "'><div class='title'>"+this.name+"</div><div class='description'>"+this.description+"</div></div>"
+    return "<div data-id='"+this.id+"' class='" +this.taskClass()+ "'><div class='title'>"+this.name+"</div><div class='description'>"+this.description+"</div></div>"
   }
 
   namespace.Task = Task;

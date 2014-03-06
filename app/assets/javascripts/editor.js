@@ -16,6 +16,12 @@ window.App = window.App || {};
         event.preventDefault();
       });
     }, this));
+
+    this.$el.keyup($.proxy(function(event){
+      this.taskDown.keyUp(event.which, function() {
+        event.preventDefault();
+      });
+    }, this));
   }
 
   Editor.prototype.createTask = function(event, task) {
@@ -29,7 +35,7 @@ window.App = window.App || {};
   }
 
   Editor.prototype.displayTask = function(id) {
-    this.$el.find('div[data-id='+id+']').toggle();
+    this.$el.find('div[data-id='+id+']').toggleClass('active');
   }
 
   namespace.Editor = Editor;
