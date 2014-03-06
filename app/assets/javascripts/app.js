@@ -5,6 +5,7 @@ window.App = window.App || {};
 function TreefingerApp() {
   this.taskList = new namespace.TaskList(window.project_id);
   this.editor = new namespace.Editor('#editor', window.project_id);
+  this.noteList = new namespace.NoteList('#notes');
 
   $(this.editor).on('createTask', $.proxy(function(event, task, editorIndex) {
     this.taskList.createTask(task, editorIndex);
@@ -16,6 +17,10 @@ function TreefingerApp() {
 
   $(this.taskList).on('toggleSelected', $.proxy(function(event, id){
     this.editor.displayTask(id);
+  },this));
+
+  $(this.taskList).on('toggleNote', $.proxy(function(event, taskId){
+    this.noteList.loadNotes(taskId)
   },this));
 }
 

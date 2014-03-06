@@ -14,13 +14,26 @@ window.App = window.App || {};
   }
 
   TaskList.prototype.bindEvents = function() {
-    this.$el.bind('click', '.name', $.proxy(this.selected, this));
+    this.$el.on('click', '>li>.name', $.proxy(this.selected, this));
+    this.$el.on('click', '>li>.notes', $.proxy(this.noted, this));
+  }
+
+  TaskList.prototype.noted = function(event){
+    event.stopPropagation()
+    var $target = $(event.target).closest('li');
+    var id      = $target.data('id');
+
+    this.$el.find('li').removeClass('noted');
+    $target.closest('li').addClass('noted');
+    $(this).trigger('toggleNote', [id]);
   }
 
   TaskList.prototype.selected = function(event) {
-    var $target = $(event.target);
+    event.stopPropagation()
+    var $target = $(event.target).closest('li');
     var id      = $target.data('id');
-    $target.parent().toggleClass('active')
+
+    $target.toggleClass('active')
     $(this).trigger('toggleSelected', [id]);
   }
 
@@ -52,7 +65,7 @@ window.App = window.App || {};
   }
 
   TaskList.prototype.updateTask = function(taskResponse) {
-    var $a = this.$el.find('a[data-id='+taskResponse.id+']');
+    var $a = this.$el.find('li[data-id='+taskResponse.id+'] a.name');
     $a.html(taskResponse.name)
   }
 

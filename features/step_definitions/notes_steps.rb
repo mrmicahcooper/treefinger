@@ -1,6 +1,7 @@
 When /^I view the notes for "(.+)"$/ do |task_name|
   within(:xpath, "//section[@id='tasks']//li[contains(.,'#{task_name}')]") do
-    click_link "notes"
+    expect(page).to have_content(task_name)
+    all(:xpath, "//li[contains(.,'#{task_name}')]//a[@class='notes']").first.click
   end
 end
 

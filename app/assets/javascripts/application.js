@@ -4,6 +4,7 @@
 //= require task
 //= require note
 //= require task_list
+//= require note_list
 //= require taskdown
 //= require editor
 //= require app
