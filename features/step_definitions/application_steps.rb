@@ -1,4 +1,4 @@
-Given /^I am logged in viewing "(.*)" with the tasks:$/ do |project_name, table|
+Given /^I am logged in, viewing "(.*)" with the tasks:$/ do |project_name, table|
   @user = Fabricate(:user)
   @project = Fabricate(:project, user: @user)
   table.hashes.each do |task|

@@ -20,6 +20,7 @@ end
 
 When /^I view the "(.+)" task$/ do |task_name|
   within("#tasks") do
-    click_link task_name
+    expect(page).to have_content(task_name)
+    all(:xpath, "//li/a[contains(.,'#{task_name}')]").first.click
   end
 end
