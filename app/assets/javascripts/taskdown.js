@@ -192,6 +192,12 @@ window.App = window.App || {};
   }
 
   Taskdown.prototype.persistTask = function($task) {
+
+    if($task.find('.title').text().isBlank()){
+    //Don't save tasks with a blank title
+      return false
+    }
+
     if($task.data('id'))
       this.updateTask($task)
     else
@@ -235,7 +241,8 @@ window.App = window.App || {};
   }
 
   Taskdown.prototype.saveTaskOnBlur = function(){
-    if(this.lastFocusedNode === undefined || currentNode().data('id') != this.lastFocusedNode.data('id')){
+    if(this.lastFocusedNode === undefined ||
+       currentNode().data('id') != this.lastFocusedNode.data('id')){
       this.persistTask(this.lastFocusedNode || currentNode());
       this.lastFocusedNode = currentNode();
     }
