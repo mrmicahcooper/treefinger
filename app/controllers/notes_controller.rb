@@ -15,7 +15,7 @@ class NotesController < ApplicationController
   def create
     respond_to do |format|
       if new_note.save
-        format.json { render json: new_note, status: :created }
+        format.json { render json: NoteRepresenter.new(new_note), status: :created }
       else
         format.json { render json: new_note.errors, status: :unprocessable_entity }
       end
