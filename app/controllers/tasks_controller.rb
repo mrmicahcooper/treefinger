@@ -5,11 +5,11 @@ class TasksController < ApplicationController
   expose(:task, attributes: :task_params)
 
   def index
-    render json: tasks
+    render json: TaskRepresenter.wrap(tasks)
   end
 
   def create
-    render json: task if task.save
+    render json: TaskRepresenter.new(task) if task.save
   end
   alias update create
 
