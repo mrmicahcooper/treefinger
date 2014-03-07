@@ -21,7 +21,7 @@ window.App = window.App || {};
       var notes = response.map(function(rawNote){
         return new App.Note(rawNote).partial()
       })
-      $('#notes ul.notes').html(notes);
+      $('#notes').addClass('active').find('ul.notes').html(notes);
     })
   }
 
