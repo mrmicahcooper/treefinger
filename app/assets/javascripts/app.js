@@ -31,4 +31,3 @@ namespace.TreefingerApp = TreefingerApp;
 $(function(){
   var application = new App.TreefingerApp();
 });
-

@@ -158,6 +158,7 @@ window.App = window.App || {};
       document.execCommand('insertHTML', true, '<div class="title"></div>')
       document.execCommand('insertText', true, stringAfterCaret)
       outdentTask()
+      this.lastFocusedNode = currentNode();
 
       return false;
     };
@@ -234,7 +235,7 @@ window.App = window.App || {};
   }
 
   Taskdown.prototype.saveTaskOnBlur = function(){
-    if(this.lastFocusedNode === undefined || currentNode().data('id') != this.lastFocusedNode.data('id')) {
+    if(this.lastFocusedNode === undefined || currentNode().data('id') != this.lastFocusedNode.data('id')){
       this.persistTask(this.lastFocusedNode || currentNode());
       this.lastFocusedNode = currentNode();
     }
