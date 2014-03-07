@@ -29,7 +29,7 @@ window.App = window.App || {};
 
   Task.prototype.listPartial = function(){
     var model = this;
-    this.tasks = $list = $("<li "+this.activeClass()+" data-id='"+this.id+"'><div class='left_arrow'></div><div class=right_arrow></div><a class='name'>"+this.name+"</a><a class='notes'>notes</a><li>")
+    this.tasks = $list = $(" <li "+this.activeClass()+" data-id='"+this.id+"'> <div class='left_arrow'></div> <div class=right_arrow></div> <a class='name'>"+this.name+"</a> <a class='notes'>notes</a> </li>")
     if(model.active)
       $list.addClass('active')
     return $list
