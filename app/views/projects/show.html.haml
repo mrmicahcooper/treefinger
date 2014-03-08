@@ -1,24 +1,22 @@
 = content_for :head do
   :javascript
     window.project_id = "#{project.id}";
-    current_username = "#{current_user.username}";
+
 = javascript_include_tag "application"
 
 = content_for :project do
   %h2= current_project.name
 
-#project(ng-controller="Project")
-
+#project
+  %section#editor_border
   %section#editor(contenteditable="true" spellcheck="false")
-
   %section#tasks
     %ul
-
-  %section#notes(ng-class="{active: noteAreVisible}")
+  %section#notes
     .note_container
       %ul.notes
-    %form.new_note(ng-submit="addNote()")
+    %form.new_note
       %fieldset
-        %textarea#note_text(placeholder="Note..." ng-model="noteText")
+        %textarea#note_text(placeholder="Note...")
       %fieldset.actions
         %input(type="submit" value="Add note")

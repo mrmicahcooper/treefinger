@@ -9,11 +9,18 @@
 +font-face("Mathlete Skinny", "Mathlete-BulkySlant")
 +font-face("Mathlete Skinny Slant", "Mathlete-BulkySlant")
 
+$task_title_color: #9ace50
+$body_color: #faf9f7
+
+
 .CodeMirror
   font-family: monaco, monospace
   font-size: 13px
   color: #686767
   line-height: 120%
+
+html, body, section#content, #project
+  height: 100%
 
 body
   line-height: 120%
@@ -147,15 +154,17 @@ header#main
       content: "/"
   section.session
     font-family: verdana, sans-serif
-    font-size: 12px
+    font-size: 13px
     position: absolute
     right: 30px
-    bottom: 0
+    top: 10px
     color: #686767
     a
       color: #686767
+    span.user
+      font-weight: bold
 
-section#content #project
+#project
   padding: 0 20px
   overflow: hidden
   clear: both
@@ -166,7 +175,7 @@ section#content #project
     max-height: 100%
     min-height: 100%
     margin: 0
-    border: solid 2px #3d3c3c
+    border: solid 1px #3d3c3c
 
 #content ul.projects
   padding: 10px 20px
@@ -180,15 +189,20 @@ section#content #project
       &:hover
         text-decoration: none
 
+section#editor_border
+  width: 15px
+  border: none
+
 section#editor
   width: 32%
-  padding: 0 10px
+  padding: 0 10px 0 0
   font-size: 14px
   +box-sizing
   font-family: monaco, sans-serif
   line-height: 120% 
   outline: 0px
   font-family: monaco, sans-serif
+  border-left: solid 1px #605e5e
   div
     display: block
     min-height: 14px
@@ -196,35 +210,39 @@ section#editor
     border: none
     white-space: pre
     +tab-size(2)
-    border-left: solid 1px #605e5e
   &>div
     display: none
   &>div.active
     display: block
   .title
-    color: #5db7d9
+    color: $task_title_color
     font-weight: bold
-    padding-left: 2px
   .description
     color: #222222
+    color: #faf9f7
     white-space: pre
-    padding-left: 2px
 
 section#tasks
-  width: 30%
+  width: 29%
   font-family: monaco, sans-serif
   font-size: 13px
-  a.name
-    display: inline-block
-    color: #9ace50
-    text-decoration: none
-    &:hover
-      text-decoration: underline
   li
-    padding: 0 20px
+    padding: 1px 15px
     margin: 0
     position: relative
     cursor: pointer
+    height: 19px
+    a.name
+      display: inline-block
+      color: #9ace50
+      text-decoration: none
+
+      +calc-max-width("100% - 50px")
+      overflow: hidden
+      white-space: nowrap
+      text-overflow: ellipsis
+      &:hover
+        text-decoration: underline
     &:hover
       background: #616161
     &.active
@@ -234,8 +252,8 @@ section#tasks
         width: 30px
         height: 22px
       .left_arrow
-        left: -19px
-        top: 2px
+        left: -16px
+        top: 3px
         background: image-url("left_arrow.png") no-repeat
     &.noted
       .right_arrow
@@ -244,13 +262,13 @@ section#tasks
         width: 30px
         height: 22px
       .right_arrow
-        right: -19px
-        top: 2px
+        right: -24px
+        top: 3px
         background: image-url("right_arrow.png") no-repeat
   .notes
     float: right
     font-size: 12px
-    color: #faf9f7
+    color: $body_color
     text-decoration: none
     &:hover
       text-decoration: underline
@@ -265,6 +283,7 @@ section#notes
   font-family: verdana, sans-serif
   font-size: 14px
   color: #c6c3c3
+  color: $body_color
   line-height: 120%
   form.new_note
     textarea
@@ -275,7 +294,7 @@ section#notes
       color: #c6c3c3
       padding: 5px
       +box-sizing(border-box)
-      font-size: 13px
+      font-size: 14px
     fieldset.actions
       float: right
       a
@@ -286,5 +305,7 @@ section#notes
     clear: both
   p.username
     color: #5db7d9
+    font-weight: bold
+    // padding: 0 0 10px 0
   p.note
-    padding: 0 0 10px 10px
+    padding: 0 0 10px 0

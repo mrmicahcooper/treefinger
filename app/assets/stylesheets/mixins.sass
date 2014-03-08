@@ -98,6 +98,11 @@ $prefixes: moz webkit o ms khtml
     -#{$prefix}-box-sizing: $type
   box-sizing: $type
 
+= calc-max-width($val)
+  @each $prefix in moz, webkit
+    width: -#{$prefix}-calc(#{$val})
+  width: calc(#{$val})
+
 = button($color1, $color2)
   padding: 8px 9px
   border: 1px solid $color1 - 3

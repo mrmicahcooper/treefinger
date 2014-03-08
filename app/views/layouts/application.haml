@@ -8,11 +8,10 @@
   %body
     %header#main
       %section.session
-        You are signed in as #{current_user.username}
-        |
-        = link_to 'view all projects', dashboard_path(current_user.username)
-        |
-        = link_to 'sign out', :sign_out
+        You are signed in as
+        %span.user #{current_user.username}
+        | #{link_to 'view all projects', dashboard_path(current_user.username)}
+        | #{link_to 'sign out', :sign_out}
       %h1= link_to "TreeFinger", root_path
       = yield :project
     %section#content(ng-app="app")
