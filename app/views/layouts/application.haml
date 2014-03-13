@@ -11,8 +11,9 @@
         You are signed in as
         %span.user #{current_user.username}
         | #{link_to 'view all projects', dashboard_path(current_user.username)}
+        | #{link_to 'add project', new_user_project_path(current_user.username)}
         | #{link_to 'sign out', :sign_out}
       %h1= link_to "TreeFinger", root_path
       = yield :project
-    %section#content(ng-app="app")
+    %section#content
       = yield

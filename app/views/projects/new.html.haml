@@ -1,0 +1,10 @@
+= content_for :project do
+  %h2 Create new Proect
+#project
+  = form_for project do |f|
+    %fieldset
+      %dl
+        %dt= f.label :name
+        %dd= f.text_field :name
+    %fieldset
+      = f.submit

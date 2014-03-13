@@ -18,3 +18,10 @@ Feature: Projects
 		And I follow "project1"
 		Then I should see "project1" in the url
 		And I should see that project name in the header
+
+	Scenario: User adds project
+		Given I am signed in
+		When I follow "add project"
+		And I fill in "Name" with "Treefinger"
+		And I press "Create Project"
+		Then I see "Treefinger"

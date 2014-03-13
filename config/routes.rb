@@ -11,7 +11,9 @@ Treefinger::Application.routes.draw do
   post '/sign_in', to: 'sessions#create', as: :sign_in
 
   get '/:username', to: 'pages#dashboard', as: :dashboard
-  get '/:username/:project_name', to: 'projects#show', as: :project
+
+  get '/:username/new_project', to: 'projects#new', as: :new_user_project
+
 
   resources :tasks, only: [] do
     resources :notes, only: [:index, :create]
@@ -21,5 +23,8 @@ Treefinger::Application.routes.draw do
     resources :tasks, only: [:index, :update]
     resource  :tasks, only: :create
   end
+
+  post '/:username/projects', to: 'projects#create', as: :projects
+  get '/:username/:project_name', to: 'projects#show', as: :project
 
 end
