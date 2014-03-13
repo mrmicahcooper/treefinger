@@ -13,7 +13,10 @@ $task_title_color: #9ace50
 $body_color: #faf9f7
 
 
-html, body, section#content, #project
+html, body, section#content
+  +calc-height("100% - 25px")
+
+#project
   height: 100%
 
 body
@@ -192,8 +195,8 @@ section#editor_border
   border: none
 
 section#editor
-  width: 32%
-  padding: 0 10px 0 0
+  +calc-width("35% - 32px")
+  padding: 3px 10px 0 0
   font-size: 14px
   +box-sizing
   font-family: monaco, sans-serif
@@ -235,7 +238,7 @@ section#tasks
       color: #9ace50
       text-decoration: none
 
-      +calc-max-width("100% - 50px")
+      +calc-width("100% - 50px")
       overflow: hidden
       white-space: nowrap
       text-overflow: ellipsis
