@@ -1,8 +1,7 @@
 = content_for :head do
+  = javascript_include_tag "application"
   :javascript
     window.project_id = "#{project.id}";
-
-= javascript_include_tag "application"
 
 = content_for :project do
   %h2= current_project.name
