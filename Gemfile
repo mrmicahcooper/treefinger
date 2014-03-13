@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.1'
+
 gem 'authem'
 gem 'decent_exposure'
 gem 'haml-rails'
