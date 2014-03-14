@@ -10,33 +10,38 @@ window.App = window.App || {};
   };
 
   Task.prototype.taskClass = function(){
-    if(this.active)
-      return 'task active'
-    else
-      return 'task'
+    return this.active ? "class='task active'" : "class='task'"
   }
 
   Task.prototype.activeClass = function(){
-    if(this.active)
-      return "class='active'"
-    else
-      return ''
+    return this.active ? "class='active'" : ""
   }
 
   Task.prototype.taskListItem = function(){
-    return this._tasklistItem || (this._taskListItem = $(this.listPartial()));
+    return this._tasklistItem || (this._taskListItem = $(this.taskListView()));
   }
 
-  Task.prototype.listPartial = function(){
-    var model = this;
-    this.tasks = $list = $(" <li "+this.activeClass()+" data-id='"+this.id+"'> <div class='left_arrow'></div> <div class=right_arrow></div> <a class='name'>"+this.name+"</a> <a class='notes'>notes</a> </li>")
-    if(model.active)
-      $list.addClass('active')
-    return $list
+  Task.prototype.taskListView = function(){
+    var view = "";
+
+    view += "<li "+this.activeClass()+" data-id='"+this.id+"'>"
+    view += "<div class='left_arrow'></div><div class=right_arrow></div>"
+    view += "<a class='name'>"+this.name+"</a> <a class='notes'>notes</a>"
+    view += "</li>"
+
+    return $(view)
   };
 
+
   Task.prototype.editorPartial = function(){
-    return "<div data-id='"+this.id+"' class='" +this.taskClass()+ "'><div class='title'>"+this.name+"</div><div class='description'>"+this.description+"</div></div>"
+    var view = "";
+
+    view += "<div data-id='"+this.id+"'" + this.taskClass() + "'>";
+    view += "<div class='title'>"+this.name+"</div>";
+    view += "<div class='description'>"+this.description+"</div>";
+    view += "</div>";
+
+    return view;
   }
 
   namespace.Task = Task;
