@@ -18,6 +18,14 @@ Feature: Tasks
 	Scenario: User views a task in the task editor
 		Given I am logged in, viewing "Foshow" with the tasks:
 			| name      | description      |
-			| something | It's a hard task |
+			| something | hard task |
 		When I view the "something" task
 		Then I see that task in the editor
+
+	@javascript
+	Scenario: User starts tasks
+		Given I am logged in, viewing "Foshow" with the tasks:
+			| name      | description      |
+			| something | hard task |
+		When I "start" the "something" task
+		Then the "something" task is "started"

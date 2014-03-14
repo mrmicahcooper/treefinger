@@ -24,3 +24,20 @@ When /^I view the "(.+)" task$/ do |task_name|
     all(:xpath, "//li/a[contains(.,'#{task_name}')]").first.click
   end
 end
+
+When /^I "(.+)" the "(.+)" task$/ do |link_name, task_name|
+  path =  "//li[contains(.,'#{task_name}')]"
+  expect(page).to have_xpath(path)
+  within(:xpath, path) do
+    click_link link_name
+  end
+end
+
+Then /^the "(.+)" task is "(.+)"$/ do |task_name, task_status|
+  task = Task.find_by(name: task_name)
+  path =  "//li[contains(.,'#{task_name}')]"
+  expect(task.status).to eq(task_status)
+  # within(:xpath, path) do
+  #   expect(page).to have_content(task_status)
+  # end
+end

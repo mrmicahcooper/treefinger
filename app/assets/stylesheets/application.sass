@@ -204,6 +204,7 @@ section#editor
   outline: 0px
   font-family: monaco, sans-serif
   border-left: solid 1px #605e5e
+  overflow: auto
   div
     display: block
     min-height: 14px
@@ -224,21 +225,22 @@ section#editor
     white-space: pre
 
 section#tasks
-  width: 29%
+  width: 35%
   font-family: monaco, sans-serif
   font-size: 13px
   li
-    padding: 1px 15px
+    padding: 1px 0 1px 15px
     margin: 0
     position: relative
     cursor: pointer
     height: 19px
+    clear: both
     a.name
       display: inline-block
       color: #9ace50
       text-decoration: none
 
-      +calc-width("100% - 50px")
+      +calc-width("100% - 75px")
       overflow: hidden
       white-space: nowrap
       text-overflow: ellipsis
@@ -265,20 +267,24 @@ section#tasks
       .right_arrow
         right: -24px
         top: 3px
+        right: -13px
+        top: 1px
         background: image-url("right_arrow.png") no-repeat
-  .notes
+  .actions
     float: right
-    font-size: 12px
+  .notes, .status
+    display: inline-block
     color: $body_color
     text-decoration: none
     &:hover
       text-decoration: underline
+  .notes
+    font-size: 20px
+  .status
+    margin-right: 10px
 
 section#notes
-  display: none
-  &.active
-    display: block
-  width: 37%
+  width: 31%
   padding: 5px 15px 20px 15px
   +box-sizing(border-box)
   font-family: verdana, sans-serif
@@ -287,6 +293,9 @@ section#notes
   color: $body_color
   line-height: 120%
   form.new_note
+    display: none
+    &.active
+      display: block
     textarea
       width: 100%
       height: 100px

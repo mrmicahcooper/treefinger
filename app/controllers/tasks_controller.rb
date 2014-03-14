@@ -19,7 +19,8 @@ class TasksController < ApplicationController
     params.require(:task).permit(
       :name,
       :description,
-      :task_string
+      :task_string,
+      :status
     )
   end
 

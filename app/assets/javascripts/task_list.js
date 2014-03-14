@@ -15,7 +15,8 @@ window.App = window.App || {};
 
   TaskList.prototype.bindEvents = function() {
     this.$el.on('click', '>li>.name', $.proxy(this.selected, this));
-    this.$el.on('click', '>li>.notes', $.proxy(this.noted, this));
+    this.$el.on('click', '>li>.actions>.notes', $.proxy(this.noted, this));
+    this.$el.on('click', '>li>.actions>.status', $.proxy(this.updateStatus, this));
   }
 
   TaskList.prototype.noted = function(event){
@@ -26,6 +27,13 @@ window.App = window.App || {};
     this.$el.find('li').removeClass('noted');
     $target.closest('li').addClass('noted');
     $(this).trigger('toggleNote', [id]);
+  }
+
+  TaskList.prototype.updateStatus = function(event) {
+    var $target = $(event.target)
+    var id      = $target.closest('li').data('id');
+    var task    = this.findTaskById(id)
+    task.updateStatus($target.text())
   }
 
   TaskList.prototype.selected = function(event) {
@@ -51,7 +59,7 @@ window.App = window.App || {};
     response.map($.proxy(function(rawTask){
       newTask = new App.Task(rawTask, true)
       this.$el.append(newTask.taskListItem());
-      $('#editor').append(newTask.editorPartial());
+      $('#editor').append(newTask.editorView());
       this.tasks.push(newTask);
       return newTask;
     }, this));

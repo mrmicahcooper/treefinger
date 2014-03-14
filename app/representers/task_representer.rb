@@ -1,15 +1,14 @@
 class TaskRepresenter < Struct.new(:task)
   def self.wrap(tasks)
-    tasks.map do |task|
-      new(task)
-    end
+    tasks.map { |task| new(task) }
   end
 
   def as_json(*args)
     {
       id: task.id,
       name: task.name,
-      description: task.description
+      description: task.description,
+      action: task.action
     }
   end
 end

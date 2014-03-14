@@ -9,6 +9,10 @@ window.App = window.App || {};
     this._notes_path = "/tasks/"+this.id+"/notes";
   };
 
+  Task.prototype.updatePath = function(){
+    return "/projects/"+window.project_id+"/tasks/" + this.id
+  }
+
   Task.prototype.taskClass = function(){
     return this.active ? "class='task active'" : "class='task'"
   }
@@ -21,19 +25,34 @@ window.App = window.App || {};
     return this._tasklistItem || (this._taskListItem = $(this.taskListView()));
   }
 
+  Task.prototype.updateStatus = function(action){
+    $.ajax({
+      url: this.updatePath(),
+      method: "put",
+      data: { task: { status: action + 'ed' } },
+      success: $.proxy(function(response){
+        this._taskListItem.find('a.status').html(response.action)
+      }, this)
+    });
+  }
+
   Task.prototype.taskListView = function(){
     var view = "";
 
     view += "<li "+this.activeClass()+" data-id='"+this.id+"'>"
     view += "<div class='left_arrow'></div><div class=right_arrow></div>"
-    view += "<a class='name'>"+this.name+"</a> <a class='notes'>notes</a>"
+    view += "<div class='actions'>"
+    view += "<a class='status' href='#'>start</a>"
+    view += "<a class='notes'>✏</a>"
+    view += "</div>"
+    view += "<a class='name'>"+this.name+"</a>"
     view += "</li>"
 
     return $(view)
   };
 
 
-  Task.prototype.editorPartial = function(){
+  Task.prototype.editorView = function(){
     var view = "";
 
     view += "<div data-id='"+this.id+"'" + this.taskClass() + "'>";
