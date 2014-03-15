@@ -6,6 +6,7 @@ window.App = window.App || {};
     this.description = task.description;
     this.id          = task.id;
     this.active      = task.active
+    this.action      = task.action
     this._notes_path = "/tasks/"+this.id+"/notes";
   };
 
@@ -42,7 +43,7 @@ window.App = window.App || {};
     view += "<li "+this.activeClass()+" data-id='"+this.id+"'>"
     view += "<div class='left_arrow'></div><div class=right_arrow></div>"
     view += "<div class='actions'>"
-    view += "<a class='status' href='#'>start</a>"
+    view += "<a class='status' href='#'>"+this.action+"</a>"
     view += "<a class='notes'>✏</a>"
     view += "</div>"
     view += "<a class='name'>"+this.name+"</a>"

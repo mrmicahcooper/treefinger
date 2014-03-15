@@ -36,8 +36,7 @@ end
 Then /^the "(.+)" task is "(.+)"$/ do |task_name, task_status|
   task = Task.find_by(name: task_name)
   path =  "//li[contains(.,'#{task_name}')]"
-  expect(task.status).to eq(task_status)
-  # within(:xpath, path) do
-  #   expect(page).to have_content(task_status)
-  # end
+  within(:xpath, path) do
+    expect(page).to have_content(task.reload.action)
+  end
 end

@@ -9,6 +9,7 @@ class TasksController < ApplicationController
   end
 
   def create
+    task.events.build(body: event_body, user: current_user) if event_body.present?
     render json: TaskRepresenter.new(task) if task.save
   end
   alias update create
@@ -22,6 +23,10 @@ class TasksController < ApplicationController
       :task_string,
       :status
     )
+  end
+
+  def event_body
+    params[:task][:status]
   end
 
 

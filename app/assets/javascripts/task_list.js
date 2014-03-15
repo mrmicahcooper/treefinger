@@ -66,6 +66,7 @@ window.App = window.App || {};
   }
 
   TaskList.prototype.createTask = function(task, index){
+    this.tasks.push(task);
     if(index == 0)
       this.$el.prepend(task.taskListItem());
     else

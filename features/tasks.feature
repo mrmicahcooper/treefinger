@@ -14,7 +14,6 @@ Feature: Tasks
 		Then I see "Do this"
 		And I see "Don't do that"
 
-	@javascript
 	Scenario: User views a task in the task editor
 		Given I am logged in, viewing "Foshow" with the tasks:
 			| name      | description      |
@@ -22,10 +21,12 @@ Feature: Tasks
 		When I view the "something" task
 		Then I see that task in the editor
 
-	@javascript
 	Scenario: User starts tasks
 		Given I am logged in, viewing "Foshow" with the tasks:
 			| name      | description      |
 			| something | hard task |
 		When I "start" the "something" task
 		Then the "something" task is "started"
+
+		When I view the notes for "something"
+		Then I see "started" in the notes

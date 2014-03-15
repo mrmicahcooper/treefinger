@@ -11,7 +11,8 @@ When(/^I add a note with "(.+)"$/) do |note_text|
 end
 
 Then(/^I see "(.+)" in the notes$/) do |note_text|
+  expect(page).to have_css(".note_container")
   within(".note_container") do
-    page.should have_text note_text
+    expect(page).to have_content note_text
   end
 end

@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   belongs_to :user
-  has_many :tasks
+  has_many :tasks, dependent: :destroy
 
   validate :name, with: Validations::SLUG
   validates_uniqueness_of :name, scope: :user_id

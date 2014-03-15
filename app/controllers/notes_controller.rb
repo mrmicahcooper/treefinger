@@ -1,6 +1,7 @@
 class NotesController < ApplicationController
 
   expose(:task)
+  expose(:activities) { task.activities }
   expose(:notes) { task.notes }
   expose(:new_note) do
     notes.build(note_params) do |note|
@@ -9,7 +10,7 @@ class NotesController < ApplicationController
   end
 
   def index
-    render json: notes.to_json(methods: [:username])
+    render json: NoteRepresenter.wrap(activities)
   end
 
   def create
