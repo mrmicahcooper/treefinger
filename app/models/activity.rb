@@ -6,5 +6,5 @@ class Activity < ActiveRecord::Base
 
   delegate :username, to: :user
 
-  default_scope ->(){order(created_at: :desc)}
+  default_scope ->(){order(created_at: :asc)}
 end
