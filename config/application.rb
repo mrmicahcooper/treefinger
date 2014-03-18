@@ -15,5 +15,6 @@ module Treefinger
   class Application < Rails::Application
     config.assets.paths << "#{Rails.root}/app/assets/fonts"
     config.autoload_paths += %W(#{config.root}/lib)
+    config.active_record.schema_format = :sql
   end
 end
