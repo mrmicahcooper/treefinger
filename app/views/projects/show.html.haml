@@ -5,7 +5,8 @@
 
 = content_for :project do
   %h2= project.name
-  = link_to "Edit", edit_project_path(current_user.username, project.name), class: 'edit_project'
+  %nav.project_nav
+    = link_to "Edit Project", edit_project_path(current_user.username, project.name)
 
 #project
   %section#editor_border

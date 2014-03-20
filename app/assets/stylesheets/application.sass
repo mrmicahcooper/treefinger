@@ -145,24 +145,31 @@ header#main
   h1, h2
     display: inline-block
   h2
-    font: normal 42px "Mathlete Skinny", sans-serif
+    font: normal 39px "Mathlete Skinny", sans-serif
     color: #686767
     &:before
       content: "/"
-  section.session, .edit_project
+  section.session, nav.project_nav a
     font-family: verdana, sans-serif
-    font-size: 13px
     color: #686767
 
   section.session
     position: absolute
     right: 30px
     top: 10px
+    font-size: 13px
     a
       color: #686767
     span.user
       font-weight: bold
 
+  nav.project_nav
+    position: absolute
+    right: 35px
+    top: 45px
+    a
+      margin: 0 3px
+      font-size: 14px
 
 #project
   padding: 0 20px

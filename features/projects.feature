@@ -19,7 +19,7 @@ Feature: Projects
 		Then I should see "project1" in the url
 		And I should see that project name in the header
 		
-		When I follow "Edit"
+		When I follow "Edit Project"
 		And I fill in "Name" with "Other project"
 		And I press "Update Project"
 		Then I see "other_project"
