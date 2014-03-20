@@ -17,6 +17,14 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def update
+    if project.save
+      redirect_to dashboard_path(current_user.username)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def project_name

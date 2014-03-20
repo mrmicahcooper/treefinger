@@ -1,0 +1,5 @@
+= content_for :project do
+  %h2 Edit #{project.name}
+#project
+  = form_for project, url: update_project_path(current_user.username, project.name) do |f|
+    = render 'fields', f: f

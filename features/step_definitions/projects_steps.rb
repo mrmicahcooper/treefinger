@@ -1,5 +1,5 @@
 When "I visit that project" do
-  visit project_path(@user.username, @project.name)
+  visit show_project_path(@user.username, @project.name)
 end
 
 Then "I should see that project name in the header" do

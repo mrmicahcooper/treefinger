@@ -5,5 +5,5 @@ Given /^I am logged in, viewing "(.*)" with the tasks:$/ do |project_name, table
     @task = Fabricate(:task, task.merge(project: @project))
   end
   step "I sign in as that user"
-  visit project_path(@user.username, @project.name)
+  visit show_project_path(@user.username, @project.name)
 end

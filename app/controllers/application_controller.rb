@@ -5,8 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_filter :require_user
 
-  expose(:current_project) { current_user.projects.last || NilProject.new }
-
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end

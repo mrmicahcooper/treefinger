@@ -9,7 +9,7 @@ Feature: Projects
 		Then I should see "project1"
 		And I should see "project2"
 
-	Scenario: User views project
+	Scenario: User views and edits project
 		Given 1 user
 		And that user has the following projects:
 			| name     |
@@ -18,10 +18,15 @@ Feature: Projects
 		And I follow "project1"
 		Then I should see "project1" in the url
 		And I should see that project name in the header
+		
+		When I follow "Edit"
+		And I fill in "Name" with "Other project"
+		And I press "Update Project"
+		Then I see "other_project"
 
 	Scenario: User adds project
 		Given I am signed in
 		When I follow "add project"
 		And I fill in "Name" with "Treefinger"
 		And I press "Create Project"
-		Then I see "Treefinger"
+		Then I see "treefinger"
