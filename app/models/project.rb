@@ -2,10 +2,11 @@ class Project < ActiveRecord::Base
   belongs_to :user
   has_many :tasks, dependent: :destroy
 
+  has_many :collaborations
+  has_many :collaborators, through: :collaborations, source: :user
+
   validate :name, with: Validations::SLUG
   validates_uniqueness_of :name, scope: :user_id
-
-  default_scope ->(){ order(:name) }
 
   before_validation :underscore
 

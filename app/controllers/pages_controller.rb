@@ -4,6 +4,6 @@ class PagesController < ApplicationController
   layout 'session', only: :home
 
   expose(:user) { User.new }
-  expose(:projects) { current_user.projects }
+  expose(:projects) { current_user.all_projects }
 
 end

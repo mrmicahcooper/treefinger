@@ -65,6 +65,36 @@ CREATE VIEW activities AS
 
 
 --
+-- Name: collaborations; Type: TABLE; Schema: public; Owner: -; Tablespace: 
+--
+
+CREATE TABLE collaborations (
+    id integer NOT NULL,
+    project_id integer,
+    user_id integer
+);
+
+
+--
+-- Name: collaborations_id_seq; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE collaborations_id_seq
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: collaborations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
+--
+
+ALTER SEQUENCE collaborations_id_seq OWNED BY collaborations.id;
+
+
+--
 -- Name: events_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
@@ -213,6 +243,13 @@ ALTER SEQUENCE users_id_seq OWNED BY users.id;
 -- Name: id; Type: DEFAULT; Schema: public; Owner: -
 --
 
+ALTER TABLE ONLY collaborations ALTER COLUMN id SET DEFAULT nextval('collaborations_id_seq'::regclass);
+
+
+--
+-- Name: id; Type: DEFAULT; Schema: public; Owner: -
+--
+
 ALTER TABLE ONLY events ALTER COLUMN id SET DEFAULT nextval('events_id_seq'::regclass);
 
 
@@ -242,6 +279,14 @@ ALTER TABLE ONLY tasks ALTER COLUMN id SET DEFAULT nextval('tasks_id_seq'::regcl
 --
 
 ALTER TABLE ONLY users ALTER COLUMN id SET DEFAULT nextval('users_id_seq'::regclass);
+
+
+--
+-- Name: collaborations_pkey; Type: CONSTRAINT; Schema: public; Owner: -; Tablespace: 
+--
+
+ALTER TABLE ONLY collaborations
+    ADD CONSTRAINT collaborations_pkey PRIMARY KEY (id);
 
 
 --
@@ -316,3 +361,5 @@ INSERT INTO schema_migrations (version) VALUES ('20140314230953');
 INSERT INTO schema_migrations (version) VALUES ('20140315171656');
 
 INSERT INTO schema_migrations (version) VALUES ('20140315173654');
+
+INSERT INTO schema_migrations (version) VALUES ('20140321000752');
